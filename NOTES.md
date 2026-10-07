@@ -47,13 +47,13 @@ isolatie tussen twee gebruikers.
   `streamable_http_client(url)` levert `(read, write)`.
 - Opslag: SQLite; nieuwe verbinding per call (thread-safe t.o.v. de server-threads).
 
-## Gecombineerde server (`mcp_server/`) – stap 1 + 2 klaar
+## Gecombineerde server (`mcp_server/`) – alle stappen klaar
 Fundering: MCP-basis + gebruikersidentificatie (sleutel) + contexttools
 (`onthoud`, `haal_context_op`, `wis_geheugen`, `begroet`). Gebruikers beheer je met
-`beheer.py`. Datamodel al klaar voor de rest:
+`beheer.py`. Logins:
 - **WebUntis**: gedeelde login uit `.env`.
-- **Digitap**: per-gebruiker ICS-URL op het gebruikersrecord in SQLite (stap 3, nog
-  te doen).
+- **Digitap**: per-gebruiker ICS-URL op het gebruikersrecord in SQLite, met terugval
+  op een gedeelde `DIGITAP_ICS_URL` uit `.env`.
 
 **Stap 2 (WebUntis) – klaar.** POC 1-code herbruikt (`untis_login.py`, `rooster.py`,
 `config.py`) en samengebonden in `untis.py`. Twee tools: `haal_rooster(dagen=7, klas)`
@@ -69,4 +69,13 @@ en `haal_vakken(klas)`.
 - Offline bewijs: `test_server.py` test nu óók de REST-parser met dezelfde fixture
   als POC 1.
 
-**Nog te doen:** stap 3 (Digitap-tools met `ics_parser.py` en de per-gebruiker URL).
+**Stap 3 (Digitap) – klaar.** POC 2-code herbruikt (`ics_parser.py` + `voorbeeld.ics`),
+ophalen in `digitap.py`. Eén tool: `haal_deadlines(vak=None, dagen=None)`.
+- **Per gebruiker én gedeeld:** de ICS-URL komt per gebruiker uit de databank; is die
+  er niet, dan valt de server terug op de gedeelde `DIGITAP_ICS_URL` uit `.env`. Zo
+  werkt zowel "één kalender" als "een kalender per gebruiker".
+- `dagen` begrensd tot 1–365; `vak` is een vrije substring-filter (vakken komen uit de
+  feed, dus geen vaste lijst mogelijk zoals bij de klas).
+- Waarschuwt (in het antwoord) als de feed enkel de lopende maand lijkt te bevatten.
+- Offline bewijs in `test_server.py` (parser + filters met `voorbeeld.ics`); end-to-end
+  getest tegen een lokale HTTP-feed → tool haalt, parset en filtert correct.

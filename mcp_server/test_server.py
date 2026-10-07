@@ -4,7 +4,8 @@ Bewijst dat:
 - de per-gebruiker Digitap-URL opgeslagen en gelezen wordt;
 - feiten van twee gebruikers strikt gescheiden blijven;
 - de WebUntis REST-parser een weekantwoord correct verwerkt en per vak het
-  eerstvolgende lesmoment afleidt.
+  eerstvolgende lesmoment afleidt;
+- de Digitap/Moodle ICS-parser deadlines correct leest en filtert (met voorbeeld.ics).
 
 Draaien: `uv run python test_server.py`
 """
@@ -12,8 +13,10 @@ Draaien: `uv run python test_server.py`
 import datetime
 import tempfile
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import database
+import ics_parser
 import rooster
 import untis
 
@@ -130,9 +133,46 @@ def test_eerstvolgende_les_per_vak():
     print("OK: eerstvolgende les per vak correct afgeleid.")
 
 
+# --- Digitap/Moodle: parsen en filteren van de ICS-kalender (voorbeeld.ics). ---
+BRUSSEL = ZoneInfo("Europe/Brussels")
+VANAF = datetime.datetime(2026, 10, 7, 9, 0, tzinfo=BRUSSEL)
+
+
+def _laad_deadlines():
+    pad = Path(__file__).with_name("voorbeeld.ics")
+    return ics_parser.parse_deadlines(pad.read_bytes())
+
+
+def test_ics_parsen_en_tijdzone():
+    deadlines = _laad_deadlines()
+    assert len(deadlines) == 4, deadlines
+    # Gesorteerd op datum; vak komt uit CATEGORIES.
+    assert deadlines[1]["vak"] == "Trends in AI"
+    # 13:00 UTC wordt 15:00 Brusselse tijd (zomertijd in oktober).
+    assert deadlines[1]["wanneer"].hour == 15 and deadlines[1]["heeft_tijd"] is True
+    # All-day event (VALUE=DATE) heeft geen tijd.
+    robot = next(d for d in deadlines if d["vak"] == "Robotics")
+    assert robot["heeft_tijd"] is False
+    print("OK: ICS geparset (vak uit CATEGORIES, tijdzone, all-day).")
+
+
+def test_ics_filteren():
+    deadlines = _laad_deadlines()
+    # Voorbije deadline (01/10) valt weg t.o.v. de vaste 'vanaf'-datum.
+    assert len(ics_parser.filter_deadlines(deadlines, vanaf=VANAF)) == 3
+    # Filter op vak (hoofdletterongevoelig).
+    trends = ics_parser.filter_deadlines(deadlines, vanaf=VANAF, vak="trends")
+    assert len(trends) == 1 and trends[0]["titel"].startswith("Labo 3")
+    # Venster van 14 dagen: 15/10 en 20/10 wel, 05/11 niet.
+    assert len(ics_parser.filter_deadlines(deadlines, vanaf=VANAF, dagen=14)) == 2
+    print("OK: filteren op toekomst, vak en venster werkt.")
+
+
 if __name__ == "__main__":
     test_digitap_url_per_gebruiker()
     test_feiten_gescheiden_per_gebruiker()
     test_rest_parser()
     test_eerstvolgende_les_per_vak()
+    test_ics_parsen_en_tijdzone()
+    test_ics_filteren()
     print("\nAlle tests geslaagd.")

@@ -20,6 +20,7 @@ from pydantic import Field
 
 import config
 import database
+import digitap
 import untis
 
 # Gesloten keuzelijst voor de klas, afgeleid uit de ene bron van waarheid (config.py).
@@ -223,6 +224,51 @@ def haal_vakken(ctx: Context, klas: KlasKeuze | None = None) -> dict:
             for naam, vak in sorted(vakken.items())
         ],
     }
+
+
+def _toon_deadline(deadline):
+    """Zet één deadline om naar leesbare velden (datetime -> tekst) voor het antwoord."""
+    if deadline["heeft_tijd"]:
+        wanneer = deadline["wanneer"].strftime("%a %d/%m/%Y om %H:%M")
+    else:
+        wanneer = deadline["wanneer"].strftime("%a %d/%m/%Y")
+    return {"vak": deadline["vak"], "titel": deadline["titel"], "vervalt": wanneer}
+
+
+@server.tool(
+    description=(
+        "Geef de komende deadlines van de gebruiker uit zijn Digitap/Moodle-kalender, "
+        "gesorteerd op datum (met vak, titel en vervaldatum). Met `vak` filter je op (een "
+        "deel van) de vaknaam; met `dagen` (1-365) toon je enkel deadlines binnen dat "
+        "aantal dagen. Gebruik dit als de gebruiker vraagt naar zijn deadlines, taken of "
+        "wat hij nog moet inleveren."
+    )
+)
+def haal_deadlines(
+    ctx: Context,
+    vak: str | None = None,
+    dagen: Annotated[int, Field(ge=1, le=365)] | None = None,
+) -> dict:
+    gebruiker_id, _ = _identificeer(ctx)
+    conn = database.verbind()
+    try:
+        persoonlijke_url = database.haal_digitap_url(conn, gebruiker_id)
+    finally:
+        conn.close()
+    bron = "persoonlijke kalender" if persoonlijke_url else "gedeelde kalender (.env)"
+
+    komend, enkel_maand = digitap.haal_deadlines(persoonlijke_url, vak=vak, dagen=dagen)
+    antwoord = {
+        "bron": bron,
+        "aantal": len(komend),
+        "deadlines": [_toon_deadline(d) for d in komend],
+    }
+    if enkel_maand:
+        antwoord["waarschuwing"] = (
+            "De feed lijkt enkel de lopende maand te bevatten. Pas 'preset_time' in de "
+            "ICS-URL aan (bv. monthnow -> recentupcoming) als je meer deadlines verwacht."
+        )
+    return antwoord
 
 
 if __name__ == "__main__":

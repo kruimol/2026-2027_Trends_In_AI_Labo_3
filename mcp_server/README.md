@@ -1,11 +1,11 @@
 # Trends in AI – gecombineerde MCP-server
 
 Deze MCP-server brengt de drie POC's samen. Hij onthoudt **context per gebruiker**,
-kan je **WebUntis-rooster** opvragen en zal (in een volgende stap) ook je
-**Digitap-deadlines** kunnen tonen.
+kan je **WebUntis-rooster** opvragen en toont je **Digitap-deadlines**.
 
-> **Stand van zaken:** stap 1 (basis + gebruikersidentificatie + context) en
-> stap 2 (WebUntis-rooster) zijn klaar. Stap 3 (Digitap) volgt.
+> **Stand van zaken:** alle drie de stappen zijn klaar — basis +
+> gebruikersidentificatie + context (stap 1), WebUntis-rooster (stap 2) en
+> Digitap-deadlines (stap 3).
 
 ## Hoe wordt een gebruiker herkend?
 
@@ -21,7 +21,8 @@ meekomt, ofwel:
 - **WebUntis**: één **gedeelde** login (uit `.env`) — het rooster is "jouw rooster".
   Wélke klas we lezen hangt af van de gebruiker (zie hieronder).
 - **Digitap**: **per gebruiker** een eigen ICS-URL, bewaard in de databank op het
-  gebruikersrecord (stel je in met `beheer.py`). (Wordt in stap 3 gebruikt.)
+  gebruikersrecord (stel je in met `beheer.py`). Heeft een gebruiker er geen, dan
+  valt de server terug op één **gedeelde** `DIGITAP_ICS_URL` uit `.env`.
 
 ## Onderdelen
 
@@ -30,6 +31,8 @@ meekomt, ofwel:
 - `untis.py` – WebUntis-laag: inloggen, rooster ophalen, vakken afleiden.
 - `untis_login.py`, `rooster.py`, `config.py` – uit POC 1 overgenomen WebUntis-code
   (twee loginroutes, REST-rooster, en de klas → klas-ID-lijst).
+- `digitap.py` – Digitap-laag: de juiste ICS-URL kiezen en de feed ophalen.
+- `ics_parser.py` – uit POC 2 overgenomen ICS-parser (deadlines lezen en filteren).
 - `beheer.py` – admin-CLI: gebruikers aanmaken en hun Digitap-URL instellen.
 - `demo.py` – start de server en bewijst dat elke sleutel enkel zijn eigen context ziet.
 
@@ -54,6 +57,15 @@ zijn (de sleutels van `config.py`, bv. `3itai`). Dat staat zo in het tool-schema
 een `enum`, zodat de LLM geen ongeldige klas kan doorgeven. `dagen` is begrensd tot
 1–28. Geef je geen `klas` mee, dan valt de server terug op de context (zie hieronder).
 
+**Digitap (stap 3)**
+
+- `haal_deadlines(vak=None, dagen=None)` – de komende deadlines (vak, titel,
+  vervaldatum), gesorteerd op datum. `vak` filtert op (een deel van) de vaknaam;
+  `dagen` (1–365) beperkt het venster. De server leest de **persoonlijke** ICS-URL van
+  de gebruiker uit de databank, of anders de **gedeelde** `DIGITAP_ICS_URL` uit `.env`.
+  Lijkt de feed enkel de lopende maand te bevatten, dan voegt het antwoord een
+  waarschuwing toe (pas `preset_time` in de URL aan, bv. `monthnow` → `recentupcoming`).
+
 ### Welke klas wordt gelezen?
 
 De WebUntis-**login** is gedeeld, maar het **rooster** verschilt per gebruiker. De
@@ -77,7 +89,7 @@ uv sync
 ## Testen (offline) en demo
 
 ```bash
-uv run python test_server.py   # databanklaag + WebUntis REST-parser
+uv run python test_server.py   # databanklaag + WebUntis REST-parser + ICS-parser
 uv run python demo.py          # end-to-end isolatie via de echte server
 ```
 
@@ -96,7 +108,9 @@ uv run python demo.py          # end-to-end isolatie via de echte server
    (`UNTIS_SERVER`, `UNTIS_SCHOOL`, `UNTIS_USER` en ofwel `UNTIS_PASSWORD` ofwel
    `UNTIS_SECRET`). `UNTIS_KLAS` is de standaardklas als een gebruiker er zelf geen
    heeft laten onthouden. Waar je server, schoolnaam en geheime sleutel vindt, staat
-   in de README van POC 1 (`poc1_webuntis/`).
+   in de README van POC 1 (`poc1_webuntis/`). `DIGITAP_ICS_URL` (optioneel) is de
+   gedeelde deadline-kalender voor gebruikers zonder eigen URL; waar je die URL vindt,
+   staat in de README van POC 2 (`poc2_deadlines/`).
 
    ```bash
    cp .env.example .env
