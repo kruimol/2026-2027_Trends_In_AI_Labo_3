@@ -47,13 +47,23 @@ isolatie tussen twee gebruikers.
   `streamable_http_client(url)` levert `(read, write)`.
 - Opslag: SQLite; nieuwe verbinding per call (thread-safe t.o.v. de server-threads).
 
-## Gecombineerde server (`mcp_server/`) – stap 1 klaar
+## Gecombineerde server (`mcp_server/`) – stap 1 + 2 klaar
 Fundering: MCP-basis + gebruikersidentificatie (sleutel) + contexttools
 (`onthoud`, `haal_context_op`, `wis_geheugen`, `begroet`). Gebruikers beheer je met
 `beheer.py`. Datamodel al klaar voor de rest:
-- **WebUntis**: gedeelde login uit `.env` (stap 2, nog te doen).
+- **WebUntis**: gedeelde login uit `.env`.
 - **Digitap**: per-gebruiker ICS-URL op het gebruikersrecord in SQLite (stap 3, nog
   te doen).
 
-**Nog te doen:** stap 2 (WebUntis-tools met `rooster.py`), stap 3 (Digitap-tools met
-`ics_parser.py` en de per-gebruiker URL).
+**Stap 2 (WebUntis) – klaar.** POC 1-code herbruikt (`untis_login.py`, `rooster.py`,
+`config.py`) en samengebonden in `untis.py`. Twee tools: `haal_rooster(dagen=7)` en
+`haal_vakken()`.
+- **Context beïnvloedt het antwoord:** welke klas we lezen volgt uit het onthouden
+  feit `klas` van de gebruiker; anders `UNTIS_KLAS` uit `.env`; anders het
+  persoonlijke studentenrooster. Zo hangt het rooster van de opgeslagen context af.
+- **Keuze:** login per tool-call (eenvoudig/veilig), telkens netjes uitloggen. Login
+  is traag → sessie cachen kan later een optimalisatie zijn.
+- Offline bewijs: `test_server.py` test nu óók de REST-parser met dezelfde fixture
+  als POC 1.
+
+**Nog te doen:** stap 3 (Digitap-tools met `ics_parser.py` en de per-gebruiker URL).

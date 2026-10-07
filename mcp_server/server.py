@@ -17,6 +17,7 @@ from dotenv import load_dotenv
 from mcp.server.mcpserver import Context, MCPServer
 
 import database
+import untis
 
 server = MCPServer(
     "trends-ai",
@@ -134,6 +135,80 @@ def begroet(ctx: Context) -> str:
     if not feiten:
         delen.append("Ik weet nog niets over jou - vertel gerust iets, dan onthoud ik het.")
     return " ".join(delen)
+
+
+def _onthouden_klas(gebruiker_id):
+    """Geef het onthouden feit 'klas' van de gebruiker, of None.
+
+    Zo bepaalt de opgeslagen context welk klasrooster we lezen. Is er geen onthouden
+    klas, dan valt de WebUntis-laag terug op UNTIS_KLAS uit .env.
+    """
+    conn = database.verbind()
+    try:
+        feiten = database.haal_feiten(conn, gebruiker_id)
+    finally:
+        conn.close()
+    return feiten.get("klas")
+
+
+def _toon_les(les):
+    """Zet één les om naar leesbare velden (datetime -> tekst) voor het antwoord."""
+    return {
+        "vak": les["vak"],
+        "volledige_naam": les["long"],
+        "wanneer": les["start"].strftime("%a %d/%m om %H:%M"),
+        "lokaal": les["lokaal"],
+    }
+
+
+@server.tool(
+    description=(
+        "Geef het lesrooster van de gebruiker voor de komende `dagen` dagen (standaard 7): "
+        "een lijst lessen met vak, tijdstip en lokaal, gesorteerd op tijd. Welke klas we "
+        "lezen volgt uit het onthouden feit 'klas' van de gebruiker (anders de standaard "
+        "uit de serverinstelling). Gebruik dit als de gebruiker vraagt naar zijn rooster, "
+        "lessen, of wanneer/waar een bepaald vak is."
+    )
+)
+def haal_rooster(ctx: Context, dagen: int = 7) -> dict:
+    gebruiker_id, _ = _identificeer(ctx)
+    klas = _onthouden_klas(gebruiker_id)
+    lessen = untis.haal_lessen(dagen, klas_naam=klas)
+    lessen.sort(key=lambda les: les["start"])
+    return {
+        "klas": klas or "(standaard uit .env of persoonlijk rooster)",
+        "dagen": dagen,
+        "aantal": len(lessen),
+        "lessen": [_toon_les(les) for les in lessen],
+    }
+
+
+@server.tool(
+    description=(
+        "Geef de vakken van de gebruiker, afgeleid uit het rooster van de komende 4 weken, "
+        "met per vak het eerstvolgende lesmoment en lokaal. Welke klas we lezen volgt uit "
+        "het onthouden feit 'klas' (anders de standaard uit de serverinstelling). Gebruik "
+        "dit als de gebruiker vraagt welke vakken hij heeft."
+    )
+)
+def haal_vakken(ctx: Context) -> dict:
+    gebruiker_id, _ = _identificeer(ctx)
+    klas = _onthouden_klas(gebruiker_id)
+    lessen = untis.haal_lessen(28, klas_naam=klas)  # 4 weken
+    vakken = untis.eerstvolgende_per_vak(lessen)
+    return {
+        "klas": klas or "(standaard uit .env of persoonlijk rooster)",
+        "aantal": len(vakken),
+        "vakken": [
+            {
+                "vak": naam,
+                "volledige_naam": vak["long"],
+                "eerstvolgende_les": vak["start"].strftime("%a %d/%m om %H:%M"),
+                "lokaal": vak["lokaal"],
+            }
+            for naam, vak in sorted(vakken.items())
+        ],
+    }
 
 
 if __name__ == "__main__":

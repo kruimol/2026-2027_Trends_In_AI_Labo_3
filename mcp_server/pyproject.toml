@@ -5,4 +5,7 @@ requires-python = ">=3.12"
 dependencies = [
     "mcp>=2",
     "python-dotenv>=1",
+    "webuntis>=0.1.25",
+    "pyotp>=2.10",
+    "requests>=2.32",
 ]

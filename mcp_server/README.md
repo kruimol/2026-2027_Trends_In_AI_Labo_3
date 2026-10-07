@@ -1,11 +1,11 @@
 # Trends in AI – gecombineerde MCP-server
 
-Deze MCP-server brengt de drie POC's samen. Hij onthoudt **context per gebruiker**
-en zal (in volgende stappen) ook je **WebUntis-rooster** en je **Digitap-deadlines**
-kunnen opvragen.
+Deze MCP-server brengt de drie POC's samen. Hij onthoudt **context per gebruiker**,
+kan je **WebUntis-rooster** opvragen en zal (in een volgende stap) ook je
+**Digitap-deadlines** kunnen tonen.
 
-> **Stand van zaken:** stap 1 (basis + gebruikersidentificatie + context) is klaar.
-> Stap 2 (WebUntis) en stap 3 (Digitap) volgen.
+> **Stand van zaken:** stap 1 (basis + gebruikersidentificatie + context) en
+> stap 2 (WebUntis-rooster) zijn klaar. Stap 3 (Digitap) volgt.
 
 ## Hoe wordt een gebruiker herkend?
 
@@ -19,7 +19,7 @@ meekomt, ofwel:
 ## Waar leven de logins?
 
 - **WebUntis**: één **gedeelde** login (uit `.env`) — het rooster is "jouw rooster".
-  (Wordt in stap 2 gebruikt.)
+  Wélke klas we lezen hangt af van de gebruiker (zie hieronder).
 - **Digitap**: **per gebruiker** een eigen ICS-URL, bewaard in de databank op het
   gebruikersrecord (stel je in met `beheer.py`). (Wordt in stap 3 gebruikt.)
 
@@ -27,15 +27,35 @@ meekomt, ofwel:
 
 - `server.py` – de MCP-server (officiële MCP Python SDK, HTTP-transport).
 - `database.py` – SQLite-opslag (tabellen `gebruikers` en `feiten`).
+- `untis.py` – WebUntis-laag: inloggen, rooster ophalen, vakken afleiden.
+- `untis_login.py`, `rooster.py`, `config.py` – uit POC 1 overgenomen WebUntis-code
+  (twee loginroutes, REST-rooster, en de klas → klas-ID-lijst).
 - `beheer.py` – admin-CLI: gebruikers aanmaken en hun Digitap-URL instellen.
 - `demo.py` – start de server en bewijst dat elke sleutel enkel zijn eigen context ziet.
 
-## Tools (stap 1)
+## Tools
+
+**Context (stap 1)**
 
 - `onthoud(sleutel, waarde)` – bewaar een feit over de gebruiker (bv. `klas`, `3itai`).
 - `haal_context_op()` – geef alles terug wat we over deze gebruiker weten.
 - `wis_geheugen()` – wis alle feiten van deze gebruiker.
 - `begroet()` – begroeting die **verschilt** naargelang de opgeslagen context.
+
+**WebUntis (stap 2)**
+
+- `haal_rooster(dagen=7)` – de lessen van de komende `dagen` dagen (vak, tijd, lokaal).
+- `haal_vakken()` – de vakken van de komende 4 weken, met per vak het eerstvolgende
+  lesmoment en lokaal.
+
+### Welke klas wordt gelezen?
+
+De WebUntis-**login** is gedeeld, maar het **rooster** verschilt per gebruiker: de
+server leest het klasrooster dat bij het onthouden feit `klas` hoort (bv. nadat je
+`onthoud('klas', '3itai')` aanriep). Is er geen onthouden klas, dan valt hij terug op
+`UNTIS_KLAS` uit `.env`; is ook die leeg, dan probeert hij het persoonlijke
+studentenrooster. De klasnaam → klas-ID-lijst staat in `config.py`. Zo beïnvloedt de
+**opgeslagen context** rechtstreeks het rooster-antwoord.
 
 ## Installeren
 
@@ -46,7 +66,7 @@ uv sync
 ## Testen (offline) en demo
 
 ```bash
-uv run python test_server.py   # databanklaag (scheiding + Digitap-URL)
+uv run python test_server.py   # databanklaag + WebUntis REST-parser
 uv run python demo.py          # end-to-end isolatie via de echte server
 ```
 
@@ -61,8 +81,11 @@ uv run python demo.py          # end-to-end isolatie via de echte server
    Noteer de **toegangssleutel** die wordt getoond. (Later kun je ze aanpassen met
    `uv run python beheer.py digitap <sleutel> "<URL>"`.)
 
-2. Kopieer `.env.example` naar `.env` (de WebUntis-velden mag je nu nog leeg laten;
-   die zijn voor stap 2):
+2. Kopieer `.env.example` naar `.env` en vul de **gedeelde** WebUntis-login in
+   (`UNTIS_SERVER`, `UNTIS_SCHOOL`, `UNTIS_USER` en ofwel `UNTIS_PASSWORD` ofwel
+   `UNTIS_SECRET`). `UNTIS_KLAS` is de standaardklas als een gebruiker er zelf geen
+   heeft laten onthouden. Waar je server, schoolnaam en geheime sleutel vindt, staat
+   in de README van POC 1 (`poc1_webuntis/`).
 
    ```bash
    cp .env.example .env
