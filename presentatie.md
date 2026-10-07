@@ -1,0 +1,4 @@
+- wat is het probleem
+- context -> waar haald hij informatie vandaan
+- waarom een mcp?
+- demo

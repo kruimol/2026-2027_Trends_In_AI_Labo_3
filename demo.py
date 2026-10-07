@@ -43,10 +43,10 @@ def main() -> None:
     # --- Moment 1: maandag 10u -------------------------------------------
     # Nieuwe sessie: we leren de vakken en één deadline kennen.
     zet_tijd("2026-03-02T10:00:00")  # maandag
-    geheugen = ContextMemory(pad=DEMO_PAD)
-    geheugen.voeg_vak_toe("Wiskunde")
-    geheugen.voeg_vak_toe("Geschiedenis")
-    geheugen.voeg_deadline_toe("Wiskunde", "2026-03-06", "examen")  # vrijdag
+    geheugen = ContextMemory(pad=DEMO_PAD, seed_pad=None)
+    geheugen.voeg_vak_toe("Wiskunde", "3ITAI")
+    geheugen.voeg_vak_toe("Geschiedenis", "3ITAI")
+    geheugen.voeg_deadline_toe("Wiskunde", "2026-03-06", "examen", "3ITAI")  # vrijdag
     geheugen.markeer_zwak_punt("Wiskunde", "integralen")
     toon_moment("MOMENT 1 - maandag 10u (vakken + deadline toegevoegd)", geheugen)
 
@@ -54,14 +54,14 @@ def main() -> None:
     # Nieuwe sessie (nieuwe ContextMemory): de sessielaag is weer leeg, maar de
     # geschiedenis is uit het bestand geladen. Eén dag voor de deadline.
     zet_tijd("2026-03-05T22:00:00")  # donderdag
-    geheugen = ContextMemory(pad=DEMO_PAD)
+    geheugen = ContextMemory(pad=DEMO_PAD, seed_pad=None)
     geheugen.log_studiesessie("Wiskunde", 90)
     toon_moment("MOMENT 2 - donderdag 22u (nieuwe sessie, 1 dag voor deadline)", geheugen)
 
     # --- Moment 3: zaterdag 14u ------------------------------------------
     # Opnieuw een nieuwe sessie: de deadline is nu voorbij.
     zet_tijd("2026-03-07T14:00:00")  # zaterdag
-    geheugen = ContextMemory(pad=DEMO_PAD)
+    geheugen = ContextMemory(pad=DEMO_PAD, seed_pad=None)
     toon_moment("MOMENT 3 - zaterdag 14u (deadline voorbij)", geheugen)
 
     # Opruimen: demobestand weer verwijderen.

@@ -1,0 +1,11 @@
+# Live data (wordt tijdens het draaien geschreven; niet in git).
+# De default data staat in seed_geheugen.json, dat wél meegaat.
+geheugen.json
+demo_geheugen.json
+data/
+
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/

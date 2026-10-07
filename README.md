@@ -35,6 +35,36 @@ uv sync
 Dit installeert de enige dependency, de officiële MCP Python SDK (`mcp[cli]`),
 plus `pytest` voor de tests.
 
+## Default data (seed)
+
+De repo bevat startdata in `seed_geheugen.json`: de vakken van onze twee klassen
+(**3ITAI** en **4VTAI**, afgeleid uit de lesroosters) en enkele deadlines in de
+toekomst, met het zwaartepunt volgende week. Zo heeft de coach bij een verse
+start meteen realistische context voor de demo.
+
+Elke klas heeft eigen vakken, maar sommige vakken zijn **gedeeld** (ze zitten in
+beide klassen): `Trends in AI`, `AI and Society` en `AI for Business`. Een vak
+bewaart daarom bij welke klas(sen) het hoort, en een deadline hoort bij een
+specifieke klas — een gedeeld vak kan immers per klas een andere deadline hebben
+(zie `Trends in AI` in de seed). `haal_context_op` toont alles netjes gegroepeerd
+per klas, zodat de twee niet door elkaar lopen.
+
+Hoe het werkt: zodra er nog geen `geheugen.json` bestaat, laadt `ContextMemory`
+de inhoud van `seed_geheugen.json`. De eerste schrijfactie maakt dan het echte
+`geheugen.json` aan (dat staat in `.gitignore`, zodat je live data niet in git
+belandt). De seed zelf wordt nooit overschreven.
+
+Wil je terug naar de default? Verwijder gewoon het live bestand:
+
+```bash
+rm geheugen.json        # lokaal (stdio)
+rm data/geheugen.json   # Docker-volume
+```
+
+> In de demo en de tests wordt de seed bewust overgeslagen
+> (`ContextMemory(..., seed_pad=None)`), zodat die een schone, voorspelbare
+> start houden.
+
 ## De demo (zonder Claude Desktop)
 
 ```bash
@@ -119,9 +149,10 @@ Test onder meer: opslaan en opnieuw laden, lege sessie na herstart, correcte
 
 Stel Claude deze vragen na elkaar (in deze volgorde):
 
-1. *"Ik volg Wiskunde en Geschiedenis. Voor Wiskunde heb ik op 6 maart een
-   examen. Integralen snap ik nog niet goed."*
-   → Claude roept `voeg_vak_toe`, `voeg_deadline_toe` en `markeer_zwak_punt` aan.
+1. *"Ik zit in 4VTAI. Voor AI programming heb ik volgende week een examen en
+   async in Python snap ik nog niet goed."*
+   → Claude roept `voeg_vak_toe` (met klas `4VTAI`), `voeg_deadline_toe` en
+   `markeer_zwak_punt` aan.
 2. *"Wat moet ik nu doen?"*
    → Claude roept eerst `haal_context_op` aan en antwoordt rekening houdend met
    de deadline en het zwakke punt.
@@ -226,7 +257,8 @@ dezelfde zeven tools, maar nu vanaf je server in plaats van lokaal.
 | `server.py` | De MCP-server met zeven tools rond `ContextMemory`. |
 | `demo.py` | Speelt drie momenten na zonder Claude Desktop. |
 | `test_context_memory.py` | Pytest-tests voor `ContextMemory`. |
-| `geheugen.json` | Wordt automatisch aangemaakt; de persistente geschiedenis. |
+| `seed_geheugen.json` | Default startdata (vakken + deadlines); wordt ingeladen bij een verse start. |
+| `geheugen.json` | Wordt automatisch aangemaakt; de persistente geschiedenis (gitignored). |
 | `reflectie.md` | Reflectievragen (inhoud schrijven we zelf). |
 | `Dockerfile` | Bouwt de server en draait hem in HTTP-modus op poort 8000. |
 | `docker-compose.yml` | Start de container met een volume voor de data. |

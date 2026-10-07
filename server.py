@@ -45,23 +45,36 @@ def haal_context_op() -> str:
 
 
 @mcp.tool()
-def voeg_vak_toe(naam: str) -> str:
-    """Sla een vak op. Roep dit aan zodra een nieuw vak in het gesprek opduikt."""
-    geheugen.voeg_vak_toe(naam)
-    return f"Vak '{naam}' opgeslagen."
+def voeg_vak_toe(naam: str, klas: str) -> str:
+    """Sla een vak op voor een klas (bijvoorbeeld '3ITAI' of '4VTAI').
+
+    Roep dit aan zodra een nieuw vak in het gesprek opduikt. Zit het vak in
+    beide klassen (een gedeeld vak), roep het dan twee keer aan, één keer per
+    klas.
+
+    Args:
+        naam: naam van het vak.
+        klas: de klas waarin dit vak gegeven wordt.
+    """
+    geheugen.voeg_vak_toe(naam, klas)
+    return f"Vak '{naam}' opgeslagen voor klas {klas}."
 
 
 @mcp.tool()
-def voeg_deadline_toe(vak: str, datum: str, type: str) -> str:
+def voeg_deadline_toe(vak: str, datum: str, type: str, klas: str) -> str:
     """Sla een deadline op zodra de student er een noemt.
+
+    Een gedeeld vak kan per klas een andere deadline hebben, daarom hoort de
+    klas er altijd bij.
 
     Args:
         vak: naam van het vak.
         datum: de vervaldag in formaat JJJJ-MM-DD.
         type: soort deadline, bijvoorbeeld 'examen', 'taak' of 'project'.
+        klas: de klas waarvoor deze deadline geldt (bijvoorbeeld '3ITAI').
     """
-    geheugen.voeg_deadline_toe(vak, datum, type)
-    return f"Deadline voor '{vak}' ({type}) op {datum} opgeslagen."
+    geheugen.voeg_deadline_toe(vak, datum, type, klas)
+    return f"Deadline voor '{vak}' ({klas}, {type}) op {datum} opgeslagen."
 
 
 @mcp.tool()

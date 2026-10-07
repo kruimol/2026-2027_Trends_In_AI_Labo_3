@@ -15,8 +15,8 @@ ENV UV_COMPILE_BYTECODE=1 \
 COPY pyproject.toml uv.lock README.md ./
 RUN uv sync --frozen --no-dev
 
-# Daarna pas de eigenlijke code. Alleen wat de server nodig heeft.
-COPY context_memory.py server.py ./
+# Daarna pas de eigenlijke code en de startdata. Alleen wat de server nodig heeft.
+COPY context_memory.py server.py seed_geheugen.json ./
 
 # Draai in HTTP-modus en bind op alle interfaces binnen de container, zodat de
 # poort van buiten de container bereikbaar is. Het geheugen schrijven we naar

@@ -1,0 +1,40 @@
+{
+  "vakken": [
+    { "naam": "Project Maker", "klassen": ["3ITAI"] },
+    { "naam": "IT Professional", "klassen": ["3ITAI"] },
+    { "naam": "Applied AI project", "klassen": ["3ITAI"] },
+    { "naam": "Sustainable IT", "klassen": ["3ITAI"] },
+    { "naam": "ML algorithms", "klassen": ["4VTAI"] },
+    { "naam": "Web Frameworks", "klassen": ["4VTAI"] },
+    { "naam": "AI programming", "klassen": ["4VTAI"] },
+    { "naam": "Mathematical foundations", "klassen": ["4VTAI"] },
+    { "naam": "Data visualization", "klassen": ["4VTAI"] },
+    { "naam": "ML Principles", "klassen": ["4VTAI"] },
+    { "naam": "DevOps", "klassen": ["4VTAI"] },
+    { "naam": "Trends in AI", "klassen": ["3ITAI", "4VTAI"] },
+    { "naam": "AI and Society", "klassen": ["3ITAI", "4VTAI"] },
+    { "naam": "AI for Business", "klassen": ["3ITAI", "4VTAI"] }
+  ],
+  "deadlines": [
+    { "vak": "Trends in AI", "klas": "3ITAI", "type": "taak", "datum": "2026-10-09" },
+    { "vak": "Trends in AI", "klas": "4VTAI", "type": "taak", "datum": "2026-10-12" },
+    { "vak": "Applied AI project", "klas": "3ITAI", "type": "project", "datum": "2026-10-13" },
+    { "vak": "ML algorithms", "klas": "4VTAI", "type": "taak", "datum": "2026-10-14" },
+    { "vak": "AI programming", "klas": "4VTAI", "type": "examen", "datum": "2026-10-15" },
+    { "vak": "Web Frameworks", "klas": "4VTAI", "type": "taak", "datum": "2026-10-16" },
+    { "vak": "Mathematical foundations", "klas": "4VTAI", "type": "examen", "datum": "2026-10-17" },
+    { "vak": "Data visualization", "klas": "4VTAI", "type": "taak", "datum": "2026-10-20" },
+    { "vak": "Project Maker", "klas": "3ITAI", "type": "project", "datum": "2026-10-24" },
+    { "vak": "AI for Business", "klas": "3ITAI", "type": "examen", "datum": "2026-11-03" }
+  ],
+  "zwakke_punten": [
+    { "vak": "Mathematical foundations", "onderwerp": "eigenwaarden" },
+    { "vak": "ML algorithms", "onderwerp": "backpropagation" },
+    { "vak": "AI programming", "onderwerp": "async in Python" },
+    { "vak": "Applied AI project", "onderwerp": "projectplanning" }
+  ],
+  "studielog": [
+    { "vak": "Trends in AI", "minuten": 45, "datum": "2026-10-06" },
+    { "vak": "ML algorithms", "minuten": 90, "datum": "2026-10-05" }
+  ]
+}
