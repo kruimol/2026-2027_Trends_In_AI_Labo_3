@@ -5,6 +5,7 @@ ze werkt op ruwe ICS-bytes. Zo kunnen we het parsen offline testen met een
 voorbeeldbestand (zie test_server.py).
 
 In een Moodle-export staat per deadline een VEVENT met:
+- UID         = stabiele identificatie (gebruiken we om een status aan te hangen),
 - SUMMARY     = naam van de opdracht,
 - CATEGORIES  = korte naam van het vak,
 - DTSTART     = vervaldatum (soms met tijd in UTC, soms enkel een datum).
@@ -34,7 +35,8 @@ def _als_brussel(moment):
 def parse_deadlines(ics_bytes):
     """Zet een ICS-feed om naar een lijst deadlines, gesorteerd op datum.
 
-    Elke deadline is een dict: {vak, titel, wanneer (aware datetime), heeft_tijd}.
+    Elke deadline is een dict: {uid, vak, titel, wanneer (aware datetime), heeft_tijd}.
+    De uid is de stabiele VEVENT-UID; daarmee hangen we later een status aan.
     """
     kalender = Calendar.from_ical(ics_bytes)
     deadlines = []
@@ -47,9 +49,16 @@ def parse_deadlines(ics_bytes):
         categorie = event.get("CATEGORIES")
         vak = str(categorie.cats[0]) if categorie and categorie.cats else "?"
         titel = str(event.get("SUMMARY", "")).strip() or "(geen titel)"
+        uid = str(event.get("UID", "")).strip()
 
         deadlines.append(
-            {"vak": vak, "titel": titel, "wanneer": wanneer, "heeft_tijd": heeft_tijd}
+            {
+                "uid": uid,
+                "vak": vak,
+                "titel": titel,
+                "wanneer": wanneer,
+                "heeft_tijd": heeft_tijd,
+            }
         )
 
     deadlines.sort(key=lambda d: d["wanneer"])

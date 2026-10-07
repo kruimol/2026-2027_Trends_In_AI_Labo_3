@@ -28,14 +28,20 @@ import untis
 # enkel een bestaande klas doorgeven en dus geen ongeldige waarde "verzinnen".
 KlasKeuze = Literal[tuple(config.KLASSEN.keys())]
 
+# Gesloten keuzelijst voor de status van een deadline (idem: enum in het schema).
+StatusKeuze = Literal["nog te doen", "mee bezig", "klaar"]
+STANDAARD_STATUS = "nog te doen"
+
 server = MCPServer(
     "trends-ai",
     instructions=(
         "Je bent een persoonlijke schoolassistent. Roep aan het BEGIN van een gesprek "
         "haal_context_op() aan om te weten wie de gebruiker is (naam, klas, studiejaar, "
         "voorkeuren). Telkens de gebruiker iets over zichzelf vertelt, roep je "
-        "onthoud(sleutel, waarde) aan om dat te bewaren. Later kun je ook het rooster "
-        "en de deadlines van de gebruiker opvragen."
+        "onthoud(sleutel, waarde) aan om dat te bewaren. Je kunt ook het rooster en de "
+        "deadlines van de gebruiker opvragen. Elke deadline heeft een persoonlijke status "
+        "('nog te doen', 'mee bezig', 'klaar'); zegt de gebruiker dat hij ergens mee bezig "
+        "is of iets af heeft, zet dan de status met markeer_deadline."
     ),
 )
 
@@ -226,22 +232,33 @@ def haal_vakken(ctx: Context, klas: KlasKeuze | None = None) -> dict:
     }
 
 
-def _toon_deadline(deadline):
-    """Zet één deadline om naar leesbare velden (datetime -> tekst) voor het antwoord."""
+def _toon_deadline(deadline, status):
+    """Zet één deadline om naar leesbare velden (datetime -> tekst) voor het antwoord.
+
+    `uid` geven we mee zodat de gebruiker (via markeer_deadline) een status kan zetten.
+    """
     if deadline["heeft_tijd"]:
         wanneer = deadline["wanneer"].strftime("%a %d/%m/%Y om %H:%M")
     else:
         wanneer = deadline["wanneer"].strftime("%a %d/%m/%Y")
-    return {"vak": deadline["vak"], "titel": deadline["titel"], "vervalt": wanneer}
+    return {
+        "uid": deadline["uid"],
+        "vak": deadline["vak"],
+        "titel": deadline["titel"],
+        "vervalt": wanneer,
+        "status": status,
+    }
 
 
 @server.tool(
     description=(
         "Geef de komende deadlines van de gebruiker uit zijn Digitap/Moodle-kalender, "
-        "gesorteerd op datum (met vak, titel en vervaldatum). Met `vak` filter je op (een "
-        "deel van) de vaknaam; met `dagen` (1-365) toon je enkel deadlines binnen dat "
-        "aantal dagen. Gebruik dit als de gebruiker vraagt naar zijn deadlines, taken of "
-        "wat hij nog moet inleveren."
+        "gesorteerd op datum (met vak, titel, vervaldatum, status en een uid). Met `vak` "
+        "filter je op (een deel van) de vaknaam; met `dagen` (1-365) toon je enkel "
+        "deadlines binnen dat aantal dagen. Elke deadline heeft een persoonlijke status "
+        "('nog te doen', 'mee bezig' of 'klaar'); wil de gebruiker weten wat nog openstaat, "
+        "toon dan de deadlines die niet 'klaar' zijn. Gebruik de meegegeven uid om met "
+        "markeer_deadline een status te zetten."
     )
 )
 def haal_deadlines(
@@ -253,6 +270,7 @@ def haal_deadlines(
     conn = database.verbind()
     try:
         persoonlijke_url = database.haal_digitap_url(conn, gebruiker_id)
+        statussen = database.haal_deadline_statussen(conn, gebruiker_id)
     finally:
         conn.close()
     bron = "persoonlijke kalender" if persoonlijke_url else "gedeelde kalender (.env)"
@@ -261,7 +279,9 @@ def haal_deadlines(
     antwoord = {
         "bron": bron,
         "aantal": len(komend),
-        "deadlines": [_toon_deadline(d) for d in komend],
+        "deadlines": [
+            _toon_deadline(d, statussen.get(d["uid"], STANDAARD_STATUS)) for d in komend
+        ],
     }
     if enkel_maand:
         antwoord["waarschuwing"] = (
@@ -269,6 +289,24 @@ def haal_deadlines(
             "ICS-URL aan (bv. monthnow -> recentupcoming) als je meer deadlines verwacht."
         )
     return antwoord
+
+
+@server.tool(
+    description=(
+        "Zet de persoonlijke status van één deadline. `uid` is de identificatie die je bij "
+        "haal_deadlines kreeg; `status` moet 'nog te doen', 'mee bezig' of 'klaar' zijn. "
+        "Gebruik dit als de gebruiker zegt dat hij met een deadline bezig is of ze af heeft. "
+        "De status blijft bewaard, ook in een nieuw gesprek."
+    )
+)
+def markeer_deadline(ctx: Context, uid: str, status: StatusKeuze) -> str:
+    gebruiker_id, _ = _identificeer(ctx)
+    conn = database.verbind()
+    try:
+        database.zet_deadline_status(conn, gebruiker_id, uid, status)
+    finally:
+        conn.close()
+    return f"Status van deadline bijgewerkt naar '{status}'."
 
 
 if __name__ == "__main__":

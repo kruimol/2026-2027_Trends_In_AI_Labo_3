@@ -65,6 +65,32 @@ def test_feiten_gescheiden_per_gebruiker():
     print("OK: feiten blijven gescheiden per gebruiker.")
 
 
+def test_deadline_status_per_gebruiker():
+    conn = _verse_db()
+    try:
+        s_aron = database.maak_gebruiker(conn, "Aron")
+        s_lotte = database.maak_gebruiker(conn, "Lotte")
+        aron = database.gebruiker_via_sleutel(conn, s_aron)
+        lotte = database.gebruiker_via_sleutel(conn, s_lotte)
+
+        database.zet_deadline_status(conn, aron["id"], "labo3@ap.be", "mee bezig")
+        database.zet_deadline_status(conn, lotte["id"], "labo3@ap.be", "klaar")
+        # Overschrijven werkt (zelfde uid, nieuwe status).
+        database.zet_deadline_status(conn, aron["id"], "labo3@ap.be", "klaar")
+
+        assert database.haal_deadline_statussen(conn, aron["id"]) == {"labo3@ap.be": "klaar"}
+        # Zelfde uid, andere gebruiker: strikt gescheiden.
+        assert database.haal_deadline_statussen(conn, lotte["id"]) == {"labo3@ap.be": "klaar"}
+        database.zet_deadline_status(conn, lotte["id"], "paper@ap.be", "nog te doen")
+        assert database.haal_deadline_statussen(conn, lotte["id"]) == {
+            "labo3@ap.be": "klaar",
+            "paper@ap.be": "nog te doen",
+        }
+    finally:
+        conn.close()
+    print("OK: deadline-status wordt per gebruiker bewaard en overschreven.")
+
+
 # --- WebUntis: mini REST-antwoord met twee vakken, één ervan geannuleerd. ---
 NEP_REST = {
     "result": {
@@ -148,6 +174,8 @@ def test_ics_parsen_en_tijdzone():
     assert len(deadlines) == 4, deadlines
     # Gesorteerd op datum; vak komt uit CATEGORIES.
     assert deadlines[1]["vak"] == "Trends in AI"
+    # Elke deadline heeft een stabiele uid (om er een status aan te hangen).
+    assert deadlines[1]["uid"] == "labo3@learning.ap.be"
     # 13:00 UTC wordt 15:00 Brusselse tijd (zomertijd in oktober).
     assert deadlines[1]["wanneer"].hour == 15 and deadlines[1]["heeft_tijd"] is True
     # All-day event (VALUE=DATE) heeft geen tijd.
@@ -171,6 +199,7 @@ def test_ics_filteren():
 if __name__ == "__main__":
     test_digitap_url_per_gebruiker()
     test_feiten_gescheiden_per_gebruiker()
+    test_deadline_status_per_gebruiker()
     test_rest_parser()
     test_eerstvolgende_les_per_vak()
     test_ics_parsen_en_tijdzone()

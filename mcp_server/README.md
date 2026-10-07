@@ -27,7 +27,7 @@ meekomt, ofwel:
 ## Onderdelen
 
 - `server.py` – de MCP-server (officiële MCP Python SDK, HTTP-transport).
-- `database.py` – SQLite-opslag (tabellen `gebruikers` en `feiten`).
+- `database.py` – SQLite-opslag (tabellen `gebruikers`, `feiten` en `deadline_status`).
 - `untis.py` – WebUntis-laag: inloggen, rooster ophalen, vakken afleiden.
 - `untis_login.py`, `rooster.py`, `config.py` – uit POC 1 overgenomen WebUntis-code
   (twee loginroutes, REST-rooster, en de klas → klas-ID-lijst).
@@ -60,11 +60,23 @@ een `enum`, zodat de LLM geen ongeldige klas kan doorgeven. `dagen` is begrensd 
 **Digitap (stap 3)**
 
 - `haal_deadlines(vak=None, dagen=None)` – de komende deadlines (vak, titel,
-  vervaldatum), gesorteerd op datum. `vak` filtert op (een deel van) de vaknaam;
-  `dagen` (1–365) beperkt het venster. De server leest de **persoonlijke** ICS-URL van
-  de gebruiker uit de databank, of anders de **gedeelde** `DIGITAP_ICS_URL` uit `.env`.
-  Lijkt de feed enkel de lopende maand te bevatten, dan voegt het antwoord een
-  waarschuwing toe (pas `preset_time` in de URL aan, bv. `monthnow` → `recentupcoming`).
+  vervaldatum, **status** en een **uid**), gesorteerd op datum. `vak` filtert op (een
+  deel van) de vaknaam; `dagen` (1–365) beperkt het venster. De server leest de
+  **persoonlijke** ICS-URL van de gebruiker uit de databank, of anders de **gedeelde**
+  `DIGITAP_ICS_URL` uit `.env`. Lijkt de feed enkel de lopende maand te bevatten, dan
+  voegt het antwoord een waarschuwing toe (pas `preset_time` in de URL aan, bv.
+  `monthnow` → `recentupcoming`).
+- `markeer_deadline(uid, status)` – zet de **persoonlijke status** van één deadline.
+  `status` is een vaste keuze (`enum`): `nog te doen`, `mee bezig` of `klaar`. De `uid`
+  krijg je uit `haal_deadlines`.
+
+### Status per deadline (per gebruiker)
+
+Elke gebruiker heeft per deadline een eigen status, bewaard in de databank
+(tabel `deadline_status`, gekoppeld aan de stabiele ICS-`uid`). Wie niets heeft gezet,
+staat op `nog te doen`. Zo kan je in een nieuw gesprek vragen *"welke deadlines heb ik
+nog?"* (alles wat niet `klaar` is) en vervolgens *"markeer deze als klaar"* — de status
+blijft bewaard over gesprekken heen.
 
 ### Welke klas wordt gelezen?
 

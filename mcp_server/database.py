@@ -46,6 +46,12 @@ def init_db(conn):
             waarde TEXT NOT NULL,
             PRIMARY KEY (gebruiker_id, sleutel)
         );
+        CREATE TABLE IF NOT EXISTS deadline_status (
+            gebruiker_id INTEGER NOT NULL REFERENCES gebruikers(id) ON DELETE CASCADE,
+            deadline_uid TEXT NOT NULL,
+            status TEXT NOT NULL,
+            PRIMARY KEY (gebruiker_id, deadline_uid)
+        );
         """
     )
     conn.commit()
@@ -111,3 +117,25 @@ def haal_feiten(conn, gebruiker_id):
 def wis_feiten(conn, gebruiker_id):
     conn.execute("DELETE FROM feiten WHERE gebruiker_id = ?", (gebruiker_id,))
     conn.commit()
+
+
+def zet_deadline_status(conn, gebruiker_id, deadline_uid, status):
+    """Bewaar of overschrijf de status van één deadline (per gebruiker, per uid)."""
+    conn.execute(
+        """
+        INSERT INTO deadline_status (gebruiker_id, deadline_uid, status)
+        VALUES (?, ?, ?)
+        ON CONFLICT(gebruiker_id, deadline_uid) DO UPDATE SET status = excluded.status
+        """,
+        (gebruiker_id, deadline_uid, status),
+    )
+    conn.commit()
+
+
+def haal_deadline_statussen(conn, gebruiker_id):
+    """Geef alle opgeslagen statussen van een gebruiker als dict {uid: status}."""
+    rijen = conn.execute(
+        "SELECT deadline_uid, status FROM deadline_status WHERE gebruiker_id = ?",
+        (gebruiker_id,),
+    ).fetchall()
+    return {rij["deadline_uid"]: rij["status"] for rij in rijen}

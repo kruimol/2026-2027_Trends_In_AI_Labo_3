@@ -79,3 +79,11 @@ ophalen in `digitap.py`. Eén tool: `haal_deadlines(vak=None, dagen=None)`.
 - Waarschuwt (in het antwoord) als de feed enkel de lopende maand lijkt te bevatten.
 - Offline bewijs in `test_server.py` (parser + filters met `voorbeeld.ics`); end-to-end
   getest tegen een lokale HTTP-feed → tool haalt, parset en filtert correct.
+
+**Status per deadline (per gebruiker).** Tweede tool `markeer_deadline(uid, status)` met
+een vaste statuslijst (`nog te doen` / `mee bezig` / `klaar`, als enum in het schema).
+- Status hangt aan de stabiele ICS-`uid`, opgeslagen in tabel `deadline_status` (per
+  gebruiker). `haal_deadlines` toont per deadline de status (default `nog te doen`) + uid.
+- Zo kan iemand in een nieuw gesprek vragen wat nog openstaat en een deadline als klaar
+  (laten) markeren; de status blijft bewaard. Getest offline (scheiding per gebruiker) en
+  end-to-end (markeren blijft bewaard over aanroepen heen).
