@@ -56,10 +56,14 @@ def _identificeer(ctx):
     conn = database.verbind()
     try:
         gebruiker = database.gebruiker_via_sleutel(conn, sleutel)
+        if gebruiker is None:
+            # Onbekende sleutel? Maak meteen een nieuwe gebruiker aan met deze sleutel.
+            # De naam is voorlopig de sleutel zelf; de gebruiker kan 'm later met
+            # onthoud('naam', ...) bijstellen.
+            database.maak_gebruiker(conn, sleutel, toegangssleutel=sleutel)
+            gebruiker = database.gebruiker_via_sleutel(conn, sleutel)
     finally:
         conn.close()
-    if gebruiker is None:
-        raise ValueError("Onbekende toegangssleutel. Maak eerst een gebruiker aan (beheer.py).")
     return gebruiker["id"], gebruiker["naam"]
 
 
