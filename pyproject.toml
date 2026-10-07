@@ -1,0 +1,19 @@
+[project]
+name = "studiecoach"
+version = "0.1.0"
+description = "Studiecoach MCP-server: contextgeheugen voor Claude Desktop"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=2.3.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+# We bouwen geen installeerbaar pakket; dit is een losse applicatie.
+# Daardoor volstaat `uv run <script>.py` zonder build-stap.
+[tool.uv]
+package = false
