@@ -91,17 +91,31 @@ def test_markeer_beheerst_verwijdert_zwak_punt(pad: Path) -> None:
 
 
 def test_seed_wordt_geladen_bij_verse_start(pad: Path) -> None:
-    """Zonder bestaand geheugen laden we de startdata uit de seed."""
+    """Zonder bestaand geheugen laden we de deadlines uit de seed."""
     # pad bestaat nog niet; seed_pad wijst naar het echte seed-bestand.
     geheugen = ContextMemory(pad=pad, seed_pad=SEED_PAD)
-    namen = {vak["naam"] for vak in geheugen.geschiedenis["vakken"]}
-    assert "Trends in AI" in namen
     assert any(d["vak"] == "AI programming" for d in geheugen.geschiedenis["deadlines"])
+    # De vakken zelf komen niet meer uit de seed, maar uit het rooster.
+    assert geheugen.geschiedenis["vakken"] == []
 
 
-def test_seed_gedeeld_vak_zit_in_beide_klassen() -> None:
-    """Een gedeeld vak uit de seed hoort bij beide klassen."""
+def test_seed_gedeeld_vak_heeft_deadline_per_klas() -> None:
+    """Een gedeeld vak uit de seed heeft een deadline in beide klassen."""
     geheugen = ContextMemory(pad=SEED_PAD, seed_pad=None)  # lees de seed rechtstreeks
-    trends = geheugen._zoek_vak("Trends in AI")
-    assert trends is not None
-    assert set(trends["klassen"]) == {"3ITAI", "4VTAI"}
+    klassen = {d["klas"] for d in geheugen.deadlines_voor_vak("Trends in AI")}
+    assert klassen == {"3ITAI", "4VTAI"}
+
+
+def test_komende_en_verlopen_deadlines(pad: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Deadlines splitsen correct in komend/vandaag/verlopen rond het 'nu'."""
+    monkeypatch.setenv(NU_OMGEVINGSVARIABELE, "2026-10-07T10:00:00")
+    geheugen = ContextMemory(pad=pad, seed_pad=None)
+    geheugen.voeg_deadline_toe("Gisteren", "2026-10-06", "taak", "3ITAI")
+    geheugen.voeg_deadline_toe("Vandaag", "2026-10-07", "taak", "3ITAI")
+    geheugen.voeg_deadline_toe("Straks", "2026-10-10", "examen", "4VTAI")
+
+    assert [d["vak"] for d in geheugen.verlopen_deadlines()] == ["Gisteren"]
+    assert [d["vak"] for d in geheugen.deadlines_vandaag()] == ["Vandaag"]
+    # komende = vandaag + toekomst, gesorteerd op datum
+    assert [d["vak"] for d in geheugen.komende_deadlines()] == ["Vandaag", "Straks"]
+    assert [d["vak"] for d in geheugen.komende_deadlines(dagen=1)] == ["Vandaag"]

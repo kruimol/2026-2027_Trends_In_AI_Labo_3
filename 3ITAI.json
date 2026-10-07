@@ -1,0 +1,3317 @@
+{
+    "format": 2,
+    "days": [
+        {
+            "date": "2026-10-05",
+            "resourceType": "CLASS",
+            "resource": {
+                "id": 10247,
+                "shortName": "3ITAI",
+                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Artifical Intelligence daggroep 1",
+                "displayName": ""
+            },
+            "status": "REGULAR",
+            "dayEntries": [],
+            "gridEntries": [
+                {
+                    "ids": [
+                        2819409,
+                        2819412,
+                        2819415,
+                        2819418
+                    ],
+                    "duration": {
+                        "start": "2026-10-05T09:00",
+                        "end": "2026-10-05T13:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 250,
+                    "layoutGroup": 1,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_PROJIXREA",
+                                "longName": "Project Mixed Reality",
+                                "displayName": "Project Mixed Reality",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.06",
+                                "longName": "01.06.ELL (24) Gaming & VR",
+                                "displayName": "ELL.01.06",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.07",
+                                "longName": "01.07.ELL (45) Projectlokaal PROG",
+                                "displayName": "ELL.01.07",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "PET",
+                                "longName": "Peeters",
+                                "displayName": "PET",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Labo",
+                                "longName": "Labo",
+                                "displayName": "Labo",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Labo",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2819637,
+                        2819640,
+                        2819643
+                    ],
+                    "duration": {
+                        "start": "2026-10-05T09:00",
+                        "end": "2026-10-05T12:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 250,
+                    "layoutWidth": 250,
+                    "layoutGroup": 1,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_PROJMAKER",
+                                "longName": "Project Maker",
+                                "displayName": "Project Maker",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.10/12 2D",
+                                "longName": "01.10/12.ELL (14) Makerspace 2D",
+                                "displayName": "ELL.01.10/12 2D",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.11 3D",
+                                "longName": "01.11.ELL (30) Makerspace 3D",
+                                "displayName": "ELL.01.11 3D",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.16",
+                                "longName": "01.16/01.17.ELL (76) Projectlokaal DVG & GDM",
+                                "displayName": "ELL.01.16",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "VBSA",
+                                "longName": "Van Battel",
+                                "displayName": "VBSA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Labo",
+                                "longName": "Labo",
+                                "displayName": "Labo",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Labo",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2820666,
+                        2820669,
+                        2820672
+                    ],
+                    "duration": {
+                        "start": "2026-10-05T09:00",
+                        "end": "2026-10-05T12:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 500,
+                    "layoutWidth": 250,
+                    "layoutGroup": 1,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_PROJSTUP",
+                                "longName": "Project Start up",
+                                "displayName": "Project Start up",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "NOO.03.017",
+                                "longName": "03.017.NOO (46) leslokaal",
+                                "displayName": "NOO.03.017",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "SERA",
+                                "longName": "Serneels",
+                                "displayName": "SERA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Labo",
+                                "longName": "Labo",
+                                "displayName": "Labo",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Labo",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        3147853,
+                        3147856
+                    ],
+                    "duration": {
+                        "start": "2026-10-05T09:00",
+                        "end": "2026-10-05T11:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 750,
+                    "layoutWidth": 250,
+                    "layoutGroup": 1,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_PROJROB",
+                                "longName": "Project Robotics",
+                                "displayName": "Project Robotics",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.22",
+                                "longName": "01.22.ELL (40) Projectlokaal AI & Robotics",
+                                "displayName": "ELL.01.22",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "NYV",
+                                "longName": "Nys",
+                                "displayName": "NYV",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Labo",
+                                "longName": "Labo",
+                                "displayName": "Labo",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Labo",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2820555
+                    ],
+                    "duration": {
+                        "start": "2026-10-05T11:00",
+                        "end": "2026-10-05T12:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 750,
+                    "layoutWidth": 250,
+                    "layoutGroup": 1,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_PROJROB",
+                                "longName": "Project Robotics",
+                                "displayName": "Project Robotics",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.22",
+                                "longName": "01.22.ELL (40) Projectlokaal AI & Robotics",
+                                "displayName": "ELL.01.22",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "DIEP",
+                                "longName": "Diependaele",
+                                "displayName": "DIEP",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "NYV",
+                                "longName": "Nys",
+                                "displayName": "NYV",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Labo",
+                                "longName": "Labo",
+                                "displayName": "Labo",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Labo",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2820783,
+                        2820786,
+                        2820789
+                    ],
+                    "duration": {
+                        "start": "2026-10-05T13:00",
+                        "end": "2026-10-05T16:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 333,
+                    "layoutGroup": 2,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_PROJSTUP",
+                                "longName": "Project Start up",
+                                "displayName": "Project Start up",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.03.13",
+                                "longName": "03.13.ELL (40) Leslokaal",
+                                "displayName": "ELL.03.13",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "SERA",
+                                "longName": "Serneels",
+                                "displayName": "SERA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Groepsleren",
+                                "longName": "Groepsleren",
+                                "displayName": "Groepsleren",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Groepsleren",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2920639,
+                        2819556
+                    ],
+                    "duration": {
+                        "start": "2026-10-05T13:00",
+                        "end": "2026-10-05T15:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 333,
+                    "layoutWidth": 333,
+                    "layoutGroup": 2,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_PROJIXREA",
+                                "longName": "Project Mixed Reality",
+                                "displayName": "Project Mixed Reality",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.00.02",
+                                "longName": "00.02.ELL (61) Projectlokaal DVG & GDM",
+                                "displayName": "ELL.00.02",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.00.03",
+                                "longName": "00.03.ELL (55) Projectlokaal DVG & GDM",
+                                "displayName": "ELL.00.03",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "PET",
+                                "longName": "Peeters",
+                                "displayName": "PET",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Theorie",
+                                "longName": "Theorie",
+                                "displayName": "Theorie",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Theorie",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2820432,
+                        2820435
+                    ],
+                    "duration": {
+                        "start": "2026-10-05T13:00",
+                        "end": "2026-10-05T15:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 667,
+                    "layoutWidth": 333,
+                    "layoutGroup": 2,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_PROJROB",
+                                "longName": "Project Robotics",
+                                "displayName": "Project Robotics",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.22",
+                                "longName": "01.22.ELL (40) Projectlokaal AI & Robotics",
+                                "displayName": "ELL.01.22",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "DIEP",
+                                "longName": "Diependaele",
+                                "displayName": "DIEP",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "VGG",
+                                "longName": "Van Grieken",
+                                "displayName": "VGG",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Groepsleren",
+                                "longName": "Groepsleren",
+                                "displayName": "Groepsleren",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Groepsleren",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        3147928
+                    ],
+                    "duration": {
+                        "start": "2026-10-05T15:00",
+                        "end": "2026-10-05T16:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 333,
+                    "layoutWidth": 666,
+                    "layoutGroup": 2,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_PROJROB",
+                                "longName": "Project Robotics",
+                                "displayName": "Project Robotics",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.22",
+                                "longName": "01.22.ELL (40) Projectlokaal AI & Robotics",
+                                "displayName": "ELL.01.22",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "VGG",
+                                "longName": "Van Grieken",
+                                "displayName": "VGG",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Groepsleren",
+                                "longName": "Groepsleren",
+                                "displayName": "Groepsleren",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Groepsleren",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2816466,
+                        2816469
+                    ],
+                    "duration": {
+                        "start": "2026-10-05T16:00",
+                        "end": "2026-10-05T18:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 3,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_ITPROF",
+                                "longName": "IT Professional",
+                                "displayName": "IT Professional",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.02.03",
+                                "longName": "02.03.ELL (129) Aula",
+                                "displayName": "ELL.02.03",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "HERB",
+                                "longName": "Herman",
+                                "displayName": "HERB",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Theorie",
+                                "longName": "Theorie",
+                                "displayName": "Theorie",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Theorie",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                }
+            ],
+            "backEntries": []
+        },
+        {
+            "date": "2026-10-06",
+            "resourceType": "CLASS",
+            "resource": {
+                "id": 10247,
+                "shortName": "3ITAI",
+                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Artifical Intelligence daggroep 1",
+                "displayName": ""
+            },
+            "status": "REGULAR",
+            "dayEntries": [],
+            "gridEntries": [
+                {
+                    "ids": [
+                        2809555,
+                        2809558,
+                        2809561,
+                        2809564
+                    ],
+                    "duration": {
+                        "start": "2026-10-06T09:00",
+                        "end": "2026-10-06T13:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 1,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_APPAIPR",
+                                "longName": "Applied AI project",
+                                "displayName": "Applied AI project",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.22",
+                                "longName": "01.22.ELL (40) Projectlokaal AI & Robotics",
+                                "displayName": "ELL.01.22",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "CASW",
+                                "longName": "Casteels",
+                                "displayName": "CASW",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Groepsleren",
+                                "longName": "Groepsleren",
+                                "displayName": "Groepsleren",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": null,
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Groepsleren",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                }
+            ],
+            "backEntries": []
+        },
+        {
+            "date": "2026-10-07",
+            "resourceType": "CLASS",
+            "resource": {
+                "id": 10247,
+                "shortName": "3ITAI",
+                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Artifical Intelligence daggroep 1",
+                "displayName": ""
+            },
+            "status": "REGULAR",
+            "dayEntries": [],
+            "gridEntries": [
+                {
+                    "ids": [
+                        2823963,
+                        2823966
+                    ],
+                    "duration": {
+                        "start": "2026-10-07T11:00",
+                        "end": "2026-10-07T13:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 1,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_TRAI",
+                                "longName": "Trends in AI",
+                                "displayName": "Trends in AI",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.22",
+                                "longName": "01.22.ELL (40) Projectlokaal AI & Robotics",
+                                "displayName": "ELL.01.22",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "HADD",
+                                "longName": "Haddouchi",
+                                "displayName": "HADD",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Labo",
+                                "longName": "Labo",
+                                "displayName": "Labo",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_EA",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Elektronica-ICT dag",
+                                "displayName": "1ITVTAI_EA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_TI",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Toegepaste Informatica dag",
+                                "displayName": "1ITVTAI_TI",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Labo",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2823921
+                    ],
+                    "duration": {
+                        "start": "2026-10-07T14:00",
+                        "end": "2026-10-07T15:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 2,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_TRAI",
+                                "longName": "Trends in AI",
+                                "displayName": "Trends in AI",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.03.11",
+                                "longName": "03.11.ELL (48) Leslokaal",
+                                "displayName": "ELL.03.11",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "HADD",
+                                "longName": "Haddouchi",
+                                "displayName": "HADD",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Theorie",
+                                "longName": "Theorie",
+                                "displayName": "Theorie",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_EA",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Elektronica-ICT dag",
+                                "displayName": "1ITVTAI_EA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_TI",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Toegepaste Informatica dag",
+                                "displayName": "1ITVTAI_TI",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Theorie",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2809237
+                    ],
+                    "duration": {
+                        "start": "2026-10-07T15:00",
+                        "end": "2026-10-07T16:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 3,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_AISO",
+                                "longName": "AI and Society",
+                                "displayName": "AI and Society",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.03.11",
+                                "longName": "03.11.ELL (48) Leslokaal",
+                                "displayName": "ELL.03.11",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "HADD",
+                                "longName": "Haddouchi",
+                                "displayName": "HADD",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Theorie",
+                                "longName": "Theorie",
+                                "displayName": "Theorie",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_EA",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Elektronica-ICT dag",
+                                "displayName": "1ITVTAI_EA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_TI",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Toegepaste Informatica dag",
+                                "displayName": "1ITVTAI_TI",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Theorie",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2809279,
+                        2809282
+                    ],
+                    "duration": {
+                        "start": "2026-10-07T16:00",
+                        "end": "2026-10-07T18:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 4,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_AISO",
+                                "longName": "AI and Society",
+                                "displayName": "AI and Society",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.03.08",
+                                "longName": "03.08.ELL (40) Leslokaal",
+                                "displayName": "ELL.03.08",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "HADD",
+                                "longName": "Haddouchi",
+                                "displayName": "HADD",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Labo",
+                                "longName": "Labo",
+                                "displayName": "Labo",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_EA",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Elektronica-ICT dag",
+                                "displayName": "1ITVTAI_EA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_TI",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Toegepaste Informatica dag",
+                                "displayName": "1ITVTAI_TI",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Labo",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                }
+            ],
+            "backEntries": []
+        },
+        {
+            "date": "2026-10-08",
+            "resourceType": "CLASS",
+            "resource": {
+                "id": 10247,
+                "shortName": "3ITAI",
+                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Artifical Intelligence daggroep 1",
+                "displayName": ""
+            },
+            "status": "REGULAR",
+            "dayEntries": [],
+            "gridEntries": [
+                {
+                    "ids": [
+                        2809399,
+                        2809402,
+                        2809405,
+                        2809408
+                    ],
+                    "duration": {
+                        "start": "2026-10-08T09:00",
+                        "end": "2026-10-08T13:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 1,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_APPAIPR",
+                                "longName": "Applied AI project",
+                                "displayName": "Applied AI project",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.22",
+                                "longName": "01.22.ELL (40) Projectlokaal AI & Robotics",
+                                "displayName": "ELL.01.22",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "COPCH",
+                                "longName": "Cop",
+                                "displayName": "COPCH",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Labo",
+                                "longName": "Labo",
+                                "displayName": "Labo",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": null,
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Labo",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2823411,
+                        2823414
+                    ],
+                    "duration": {
+                        "start": "2026-10-08T14:00",
+                        "end": "2026-10-08T16:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 2,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_SUSTIT",
+                                "longName": "Sustainable IT",
+                                "displayName": "Sustainable IT",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "VIA.01.27",
+                                "longName": "01.27.VIA (265) Aula",
+                                "displayName": "VIA.01.27",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "COPCH",
+                                "longName": "Cop",
+                                "displayName": "COPCH",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Theorie",
+                                "longName": "Theorie",
+                                "displayName": "Theorie",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Theorie",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2819790,
+                        2819793,
+                        3122454
+                    ],
+                    "duration": {
+                        "start": "2026-10-08T16:00",
+                        "end": "2026-10-08T19:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 3,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_PROJMAKER",
+                                "longName": "Project Maker",
+                                "displayName": "Project Maker",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.10/12 2D",
+                                "longName": "01.10/12.ELL (14) Makerspace 2D",
+                                "displayName": "ELL.01.10/12 2D",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.11 3D",
+                                "longName": "01.11.ELL (30) Makerspace 3D",
+                                "displayName": "ELL.01.11 3D",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.15",
+                                "longName": "01.15.ELL (62) Projectlokaal DVG & GDM",
+                                "displayName": "ELL.01.15",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "HESA",
+                                "longName": "Hendrickx",
+                                "displayName": "HESA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Groepsleren",
+                                "longName": "Groepsleren",
+                                "displayName": "Groepsleren",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTCSC",
+                                "longName": "2de jaar Bachelor IT & Cyber Security and Cloud vervolgtraject na GRAD Systeem en netwerkbeheer dag",
+                                "displayName": "2ITVTCSC",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTIOT",
+                                "longName": "2de jaar Bachelor IT & Internet of Things vervolgtraject na GRAD Internet of Things dag",
+                                "displayName": "2ITVTIOT",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "2ITVTSOF1",
+                                "longName": "2de jaar Bachelor IT & Software vervolgtraject na GRAD Programmeren dag",
+                                "displayName": "2ITVTSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Groepsleren",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                }
+            ],
+            "backEntries": []
+        },
+        {
+            "date": "2026-10-09",
+            "resourceType": "CLASS",
+            "resource": {
+                "id": 10247,
+                "shortName": "3ITAI",
+                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Artifical Intelligence daggroep 1",
+                "displayName": ""
+            },
+            "status": "REGULAR",
+            "dayEntries": [],
+            "gridEntries": [
+                {
+                    "ids": [
+                        2810323,
+                        2810326,
+                        2810329,
+                        2810332
+                    ],
+                    "duration": {
+                        "start": "2026-10-09T09:00",
+                        "end": "2026-10-09T13:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 1,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_APPINT",
+                                "longName": "Applied international project",
+                                "displayName": "Applied international project",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.18",
+                                "longName": "01.18.ELL (32) Projectlokaal IOT",
+                                "displayName": "ELL.01.18",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "LUMA",
+                                "longName": "Luyts",
+                                "displayName": "LUMA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "VADK",
+                                "longName": "Van Merode",
+                                "displayName": "VADK",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Labo",
+                                "longName": "Labo",
+                                "displayName": "Labo",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITBUS1",
+                                "longName": "2de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Business daggroep 1",
+                                "displayName": "3ITBUS1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 1",
+                                "displayName": "3ITCSC1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITCSC2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Cyber Security and Cloud daggroep 2",
+                                "displayName": "3ITCSC2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITIOT1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Internet of Things daggroep 1",
+                                "displayName": "3ITIOT1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF1",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 1",
+                                "displayName": "3ITSOF1",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "3ITSOF2",
+                                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Software daggroep 2",
+                                "displayName": "3ITSOF2",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Labo",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2808961
+                    ],
+                    "duration": {
+                        "start": "2026-10-09T14:00",
+                        "end": "2026-10-09T15:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 2,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_AIBUS",
+                                "longName": "AI for Business",
+                                "displayName": "AI for Business",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.22",
+                                "longName": "01.22.ELL (40) Projectlokaal AI & Robotics",
+                                "displayName": "ELL.01.22",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "COPCH",
+                                "longName": "Cop",
+                                "displayName": "COPCH",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Theorie",
+                                "longName": "Theorie",
+                                "displayName": "Theorie",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_EA",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Elektronica-ICT dag",
+                                "displayName": "1ITVTAI_EA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_TI",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Toegepaste Informatica dag",
+                                "displayName": "1ITVTAI_TI",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Theorie",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                },
+                {
+                    "ids": [
+                        2809012,
+                        2809015,
+                        2809018
+                    ],
+                    "duration": {
+                        "start": "2026-10-09T15:00",
+                        "end": "2026-10-09T18:00"
+                    },
+                    "type": "NORMAL_TEACHING_PERIOD",
+                    "status": "REGULAR",
+                    "statusDetail": null,
+                    "name": null,
+                    "layoutStartPosition": 0,
+                    "layoutWidth": 1000,
+                    "layoutGroup": 3,
+                    "color": "c0f1ff",
+                    "notesAll": "",
+                    "icons": [],
+                    "position1": [
+                        {
+                            "current": {
+                                "type": "SUBJECT",
+                                "status": "REGULAR",
+                                "shortName": "MDI_IT_AIBUS",
+                                "longName": "AI for Business",
+                                "displayName": "AI for Business",
+                                "displayNameLabel": "LONGNAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position2": [
+                        {
+                            "current": {
+                                "type": "ROOM",
+                                "status": "REGULAR",
+                                "shortName": "ELL.01.22",
+                                "longName": "01.22.ELL (40) Projectlokaal AI & Robotics",
+                                "displayName": "ELL.01.22",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position3": [
+                        {
+                            "current": {
+                                "type": "TEACHER",
+                                "status": "REGULAR",
+                                "shortName": "COPCH",
+                                "longName": "Cop",
+                                "displayName": "COPCH",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position4": [
+                        {
+                            "current": {
+                                "type": "INFO",
+                                "status": "REGULAR",
+                                "shortName": "Labo",
+                                "longName": "Labo",
+                                "displayName": "Labo",
+                                "displayNameLabel": null
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position5": [
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_EA",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Elektronica-ICT dag",
+                                "displayName": "1ITVTAI_EA",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        },
+                        {
+                            "current": {
+                                "type": "CLASS",
+                                "status": "REGULAR",
+                                "shortName": "1ITVTAI_TI",
+                                "longName": "Bachelor IT en Artificial Intelligence verkort programma na Toegepaste Informatica dag",
+                                "displayName": "1ITVTAI_TI",
+                                "displayNameLabel": "NAME"
+                            },
+                            "removed": null
+                        }
+                    ],
+                    "position6": null,
+                    "position7": null,
+                    "texts": [],
+                    "lessonText": "",
+                    "lessonInfo": "Labo",
+                    "substitutionText": "",
+                    "userName": null,
+                    "moved": null,
+                    "durationTotal": null,
+                    "link": null
+                }
+            ],
+            "backEntries": []
+        },
+        {
+            "date": "2026-10-10",
+            "resourceType": "CLASS",
+            "resource": {
+                "id": 10247,
+                "shortName": "3ITAI",
+                "longName": "3de jaar Bachelor Toegepaste Informatica & Elektronica-ICT: Artifical Intelligence daggroep 1",
+                "displayName": ""
+            },
+            "status": "NO_DATA",
+            "dayEntries": [],
+            "gridEntries": [],
+            "backEntries": []
+        }
+    ],
+    "errors": []
+}

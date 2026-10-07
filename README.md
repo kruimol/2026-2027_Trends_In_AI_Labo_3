@@ -8,20 +8,31 @@ de context.
 
 Gemaakt door twee studenten. Bewust klein en leesbaar gehouden.
 
-## Hoe het werkt: drie contextlagen
+## Hoe het werkt: geheugen + rooster
 
-Alles draait rond één klasse, `ContextMemory` (in `context_memory.py`), met drie lagen:
+De server combineert twee lagen:
+
+**1. Het contextgeheugen** — de klasse `ContextMemory` (in `context_memory.py`),
+schrijfbaar, met drie sublagen:
 
 1. **Sessie** — acties van de huidige draaironde van de server. Leeft alleen in
    het geheugen en is dus **leeg na elke herstart**.
-2. **Geschiedenis** — vakken, deadlines, zwakke punten en een studielog. Wordt
+2. **Geschiedenis** — deadlines, zwakke punten en een studielog. Wordt
    bewaard in `geheugen.json` en blijft dus **over sessies heen** bestaan.
 3. **Omgeving** — wordt bij **elke aanvraag opnieuw berekend**: datum, weekdag,
    uur, dagdeel, dagen tot elke deadline en welke deadlines voorbij zijn.
 
-Het "huidige" tijdstip is overschrijfbaar via de omgevingsvariabele
-`STUDIECOACH_NU` (ISO-formaat), zodat we in een demo een ander moment kunnen
-simuleren.
+**2. Het lessenrooster** — de klasse `Rooster` (in `rooster.py`), **read-only**.
+Zij leest de WebUntis-exports van onze twee klassen in — `3ITAI.json` en
+`4VTAI.json` (één week, 2026-10-05 t/m 2026-10-09) — en zet elke les om naar één
+genormaliseerd record (vak, lokaal, docent, lesvorm, start/eind, medeklassen).
+Daarmee beantwoordt de coach vragen als "welke les heb ik nu?", "wat is mijn
+volgende les?", "welke lessen heb ik vandaag / binnen X uur?" en "wanneer krijg
+ik vak Y?". De **vakkenlijst wordt hieruit afgeleid** (dus niet apart bijgehouden).
+
+Beide lagen delen hetzelfde "huidige" tijdstip. Dat is overschrijfbaar via de
+omgevingsvariabele `STUDIECOACH_NU` (ISO-formaat, bv. `2026-10-07T10:30`), zodat
+we in een demo of test een vast moment binnen de roosterweek kunnen simuleren.
 
 ## Installatie
 
@@ -35,19 +46,57 @@ uv sync
 Dit installeert de enige dependency, de officiële MCP Python SDK (`mcp[cli]`),
 plus `pytest` voor de tests.
 
-## Default data (seed)
+## De vakken en de deadlines
 
-De repo bevat startdata in `seed_geheugen.json`: de vakken van onze twee klassen
-(**3ITAI** en **4VTAI**, afgeleid uit de lesroosters) en enkele deadlines in de
-toekomst, met het zwaartepunt volgende week. Zo heeft de coach bij een verse
-start meteen realistische context voor de demo.
+De **vakken** van onze twee klassen (**3ITAI** en **4VTAI**) worden rechtstreeks
+uit de lesroosters (`3ITAI.json` / `4VTAI.json`) afgeleid — er is dus geen aparte
+vakkenlijst die uit sync kan lopen. Vraag ze op met `vakken_in_rooster`.
 
-Elke klas heeft eigen vakken, maar sommige vakken zijn **gedeeld** (ze zitten in
-beide klassen): `Trends in AI`, `AI and Society` en `AI for Business`. Een vak
-bewaart daarom bij welke klas(sen) het hoort, en een deadline hoort bij een
-specifieke klas — een gedeeld vak kan immers per klas een andere deadline hebben
+Elke klas heeft eigen vakken, maar sommige zijn **gedeeld** (ze zitten in beide
+klassen): `Trends in AI`, `AI and Society` en `AI for Business`. Die worden als
+"gedeeld" gemarkeerd.
+
+De **deadlines** zitten in `seed_geheugen.json` (samen met enkele zwakke punten
+en een studielog) — zelf gemaakte, realistische deadlines verspreid over beide
+klassen, met het zwaartepunt rond de roosterweek. Een deadline hoort bij een
+specifieke klas, want een gedeeld vak kan per klas een andere deadline hebben
 (zie `Trends in AI` in de seed). `haal_context_op` toont alles netjes gegroepeerd
 per klas, zodat de twee niet door elkaar lopen.
+
+## Beschikbare tools
+
+Alle tools geven leesbare Nederlandstalige tekst terug.
+
+**Context**
+- `haal_context_op` — roep dit altijd eerst aan: omgeving (nu), rooster (les
+  nu/straks/vandaag), bewaarde geschiedenis en de sessie, in één blok.
+- `wat_nu` — kort advies: wat loopt er nu (of wat is de volgende les), de
+  dichtstbijzijnde deadline en een eventueel bijbehorend zwak punt.
+
+**Rooster (read-only)**
+- `les_nu` — welke les loopt er nu? (optioneel per klas)
+- `volgende_les` — de eerstvolgende les.
+- `lessen_vandaag` — alle lessen van vandaag.
+- `lessen_op_dag(datum)` — lessen op een bepaalde dag (JJJJ-MM-DD).
+- `lessen_binnen_uren(uren)` — lessen die binnen X uur starten.
+- `rooster_week` — het volledige rooster van de week.
+- `wanneer_vak(vak)` — alle momenten van een vak (over beide klassen).
+- `vakken_in_rooster` — de vakkenlijst, met gedeelde vakken gemarkeerd.
+
+**Deadlines bevragen (read-only)**
+- `komende_deadlines(dagen?)` — wat komt er nog aan (optionele horizon in dagen).
+- `deadlines_vandaag` — wat vervalt vandaag.
+- `verlopen_deadlines` — wat is al voorbij.
+- `deadlines_voor_vak(vak)` — deadlines van één vak.
+- `deadlines_voor_klas(klas)` — deadlines van één klas.
+
+**Geheugen bijwerken (schrijvend)**
+- `voeg_deadline_toe`, `voeg_vak_toe`, `markeer_zwak_punt`, `markeer_beheerst`,
+  `log_studiesessie`, `wis_geheugen`.
+
+Een `klas`-argument is telkens optioneel en filtert op `3ITAI` of `4VTAI`.
+
+## Default data (seed)
 
 Hoe het werkt: zodra er nog geen `geheugen.json` bestaat, laadt `ContextMemory`
 de inhoud van `seed_geheugen.json`. De eerste schrijfactie maakt dan het echte
@@ -243,7 +292,7 @@ bereikbaar is; dan staat de DNS-rebinding-controle uit.)
 
 In Claude Desktop / claude.ai: **Settings → Connectors → Add custom connector**,
 en geef de URL `https://studiecoach.jouwdomein.be/mcp` op. Daarna verschijnen
-dezelfde zeven tools, maar nu vanaf je server in plaats van lokaal.
+dezelfde tools, maar nu vanaf je server in plaats van lokaal.
 
 > Let op: in HTTP-modus is er **één gedeeld `geheugen.json`** voor iedereen die
 > verbindt. Voor dit schoolprototype is dat prima; het is geen gebruikersgescheiden
@@ -254,10 +303,13 @@ dezelfde zeven tools, maar nu vanaf je server in plaats van lokaal.
 | Bestand | Rol |
 |---|---|
 | `context_memory.py` | De klasse `ContextMemory` met de drie lagen en JSON-opslag. |
-| `server.py` | De MCP-server met zeven tools rond `ContextMemory`. |
+| `rooster.py` | De klasse `Rooster`: leest de lesroosters read-only in en bevraagt ze. |
+| `server.py` | De MCP-server met alle tools rond `ContextMemory` en `Rooster`. |
+| `3ITAI.json`, `4VTAI.json` | De WebUntis-lesroosters van de twee klassen (één week). |
 | `demo.py` | Speelt drie momenten na zonder Claude Desktop. |
 | `test_context_memory.py` | Pytest-tests voor `ContextMemory`. |
-| `seed_geheugen.json` | Default startdata (vakken + deadlines); wordt ingeladen bij een verse start. |
+| `test_rooster.py` | Pytest-tests voor `Rooster`. |
+| `seed_geheugen.json` | Default startdata (deadlines + zwakke punten + studielog); wordt ingeladen bij een verse start. |
 | `geheugen.json` | Wordt automatisch aangemaakt; de persistente geschiedenis (gitignored). |
 | `reflectie.md` | Reflectievragen (inhoud schrijven we zelf). |
 | `Dockerfile` | Bouwt de server en draait hem in HTTP-modus op poort 8000. |

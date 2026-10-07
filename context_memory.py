@@ -53,6 +53,24 @@ WEEKDAGEN = [
 ]
 
 
+def huidig_tijdstip() -> datetime:
+    """Geef het "huidige" tijdstip terug (de klok, of een gesimuleerd moment).
+
+    Normaal is dat de echte klok, maar via de omgevingsvariabele
+    ``STUDIECOACH_NU`` (ISO-formaat, bv. ``2026-10-07T10:30``) kunnen we een
+    ander moment simuleren. Dat maakt een reproduceerbare demo en reproduceerbare
+    tests mogelijk. Deze functie staat op moduleniveau zodat zowel het geheugen
+    als het rooster (``rooster.py``) exact dezelfde "nu" gebruiken.
+    """
+    rauw = os.environ.get(NU_OMGEVINGSVARIABELE)
+    if rauw:
+        try:
+            return datetime.fromisoformat(rauw)
+        except ValueError:
+            logger.warning("Ongeldige %s=%r; gebruik de echte klok.", NU_OMGEVINGSVARIABELE, rauw)
+    return datetime.now()
+
+
 def _leeg_geheugen() -> dict[str, list]:
     """Geef de structuur van een leeg geschiedenis-geheugen terug.
 
@@ -128,19 +146,8 @@ class ContextMemory:
     # Omgeving: alles wat van het huidige tijdstip afhangt               #
     # ------------------------------------------------------------------ #
     def _nu(self) -> datetime:
-        """Geef het "huidige" tijdstip terug.
-
-        Normaal is dat de echte klok, maar via de omgevingsvariabele
-        ``STUDIECOACH_NU`` (ISO-formaat) kunnen we een ander moment simuleren.
-        Dat maakt een reproduceerbare demo mogelijk.
-        """
-        rauw = os.environ.get(NU_OMGEVINGSVARIABELE)
-        if rauw:
-            try:
-                return datetime.fromisoformat(rauw)
-            except ValueError:
-                logger.warning("Ongeldige %s=%r; gebruik de echte klok.", NU_OMGEVINGSVARIABELE, rauw)
-        return datetime.now()
+        """Geef het "huidige" tijdstip terug (zie ``huidig_tijdstip``)."""
+        return huidig_tijdstip()
 
     @staticmethod
     def _dagdeel(uur: int) -> str:
@@ -153,6 +160,31 @@ class ContextMemory:
             return "avond"
         return "nacht"
 
+    @staticmethod
+    def _deadline_info(deadline: dict, vandaag: date) -> dict[str, Any]:
+        """Verrijk één opgeslagen deadline met afgeleide velden.
+
+        Voegt ``dagen_tot`` (negatief = al voorbij) en ``voorbij`` toe. Deze ene
+        plek wordt door alle deadline-leesfuncties hergebruikt, zodat de telling
+        overal identiek is.
+        """
+        vervaldag = date.fromisoformat(deadline["datum"])
+        dagen = (vervaldag - vandaag).days
+        return {
+            "vak": deadline["vak"],
+            "klas": deadline.get("klas", "?"),
+            "type": deadline["type"],
+            "datum": deadline["datum"],
+            "dagen_tot": dagen,  # negatief = al voorbij
+            "voorbij": dagen < 0,
+        }
+
+    def _alle_deadlines(self) -> list[dict[str, Any]]:
+        """Geef alle deadlines verrijkt en gesorteerd op datum (vroegste eerst)."""
+        vandaag = self._nu().date()
+        verrijkt = [self._deadline_info(d, vandaag) for d in self.geschiedenis["deadlines"]]
+        return sorted(verrijkt, key=lambda d: d["datum"])
+
     def omgeving(self) -> dict[str, Any]:
         """Bereken de omgevingslaag op basis van het huidige tijdstip.
 
@@ -161,29 +193,45 @@ class ContextMemory:
         """
         nu = self._nu()
         vandaag = nu.date()
-
-        deadlines_info: list[dict[str, Any]] = []
-        for deadline in self.geschiedenis["deadlines"]:
-            vervaldag = date.fromisoformat(deadline["datum"])
-            dagen = (vervaldag - vandaag).days
-            deadlines_info.append(
-                {
-                    "vak": deadline["vak"],
-                    "klas": deadline.get("klas", "?"),
-                    "type": deadline["type"],
-                    "datum": deadline["datum"],
-                    "dagen_tot": dagen,  # negatief = al voorbij
-                    "voorbij": dagen < 0,
-                }
-            )
-
         return {
             "datum": vandaag.isoformat(),
             "weekdag": WEEKDAGEN[vandaag.weekday()],
             "uur": nu.hour,
             "dagdeel": self._dagdeel(nu.hour),
-            "deadlines": deadlines_info,
+            "deadlines": self._alle_deadlines(),
         }
+
+    # ------------------------------------------------------------------ #
+    # Deadlines bevragen (read-only, afgeleid)                           #
+    # ------------------------------------------------------------------ #
+    def komende_deadlines(self, dagen: int | None = None) -> list[dict[str, Any]]:
+        """Geef de deadlines die nog moeten komen (vandaag of later).
+
+        Met ``dagen`` beperk je tot een horizon: bv. ``dagen=7`` geeft enkel de
+        deadlines binnen de komende week. Gesorteerd op datum.
+        """
+        komend = [d for d in self._alle_deadlines() if not d["voorbij"]]
+        if dagen is not None:
+            komend = [d for d in komend if d["dagen_tot"] <= dagen]
+        return komend
+
+    def verlopen_deadlines(self) -> list[dict[str, Any]]:
+        """Geef de deadlines die al voorbij zijn (gesorteerd op datum)."""
+        return [d for d in self._alle_deadlines() if d["voorbij"]]
+
+    def deadlines_vandaag(self) -> list[dict[str, Any]]:
+        """Geef de deadlines die vandaag vervallen."""
+        return [d for d in self._alle_deadlines() if d["dagen_tot"] == 0]
+
+    def deadlines_voor_vak(self, vak: str) -> list[dict[str, Any]]:
+        """Geef alle deadlines van één vak (over beide klassen heen)."""
+        naam = vak.casefold()
+        return [d for d in self._alle_deadlines() if d["vak"].casefold() == naam]
+
+    def deadlines_voor_klas(self, klas: str) -> list[dict[str, Any]]:
+        """Geef alle deadlines van één klas."""
+        naam = klas.casefold()
+        return [d for d in self._alle_deadlines() if d["klas"].casefold() == naam]
 
     # ------------------------------------------------------------------ #
     # Acties die de geschiedenis aanpassen                               #
@@ -296,18 +344,8 @@ class ContextMemory:
 
         regels.append("")
         regels.append("=== GESCHIEDENIS (bewaard) ===")
-        if self.geschiedenis["vakken"]:
-            # Ook de vakken per klas tonen; een gedeeld vak markeren we expliciet.
-            for klas in klassen:
-                namen: list[str] = []
-                for vak in self.geschiedenis["vakken"]:
-                    if klas in vak["klassen"]:
-                        gedeeld = " (gedeeld)" if len(vak["klassen"]) > 1 else ""
-                        namen.append(vak["naam"] + gedeeld)
-                if namen:
-                    regels.append(f"Vakken {klas}: " + ", ".join(namen))
-        else:
-            regels.append("Vakken: geen")
+        # De vakkenlijst komt uit het rooster (zie rooster.py); hier tonen we
+        # enkel de bewaarde geheugenlaag: zwakke punten en het studielog.
         if self.geschiedenis["zwakke_punten"]:
             for zwak in self.geschiedenis["zwakke_punten"]:
                 regels.append(f"Zwak punt: {zwak['vak']} - {zwak['onderwerp']}")
