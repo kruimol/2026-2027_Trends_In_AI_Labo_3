@@ -44,18 +44,29 @@ meekomt, ofwel:
 
 **WebUntis (stap 2)**
 
-- `haal_rooster(dagen=7)` – de lessen van de komende `dagen` dagen (vak, tijd, lokaal).
-- `haal_vakken()` – de vakken van de komende 4 weken, met per vak het eerstvolgende
-  lesmoment en lokaal.
+- `haal_rooster(dagen=7, klas=None)` – de lessen van de komende `dagen` dagen (1–28)
+  met vak, tijd en lokaal.
+- `haal_vakken(klas=None)` – de vakken van de komende 4 weken, met per vak het
+  eerstvolgende lesmoment en lokaal.
+
+De `klas`-parameter is **optioneel** en kan enkel een waarde uit een **vaste lijst**
+zijn (de sleutels van `config.py`, bv. `3itai`). Dat staat zo in het tool-schema als
+een `enum`, zodat de LLM geen ongeldige klas kan doorgeven. `dagen` is begrensd tot
+1–28. Geef je geen `klas` mee, dan valt de server terug op de context (zie hieronder).
 
 ### Welke klas wordt gelezen?
 
-De WebUntis-**login** is gedeeld, maar het **rooster** verschilt per gebruiker: de
-server leest het klasrooster dat bij het onthouden feit `klas` hoort (bv. nadat je
-`onthoud('klas', '3itai')` aanriep). Is er geen onthouden klas, dan valt hij terug op
-`UNTIS_KLAS` uit `.env`; is ook die leeg, dan probeert hij het persoonlijke
-studentenrooster. De klasnaam → klas-ID-lijst staat in `config.py`. Zo beïnvloedt de
-**opgeslagen context** rechtstreeks het rooster-antwoord.
+De WebUntis-**login** is gedeeld, maar het **rooster** verschilt per gebruiker. De
+server kiest de klas in deze volgorde:
+
+1. de `klas`-parameter als die bij de tool-call wordt meegegeven (uit de vaste lijst);
+2. anders het onthouden feit `klas` (bv. nadat je `onthoud('klas', '3itai')` aanriep);
+3. anders `UNTIS_KLAS` uit `.env`;
+4. anders het persoonlijke studentenrooster.
+
+De klasnaam → klas-ID-lijst staat in `config.py`. Zo beïnvloedt de **opgeslagen
+context** het rooster-antwoord, terwijl de LLM dankzij de vaste keuzelijst nooit een
+ongeldige klas kan doorgeven.
 
 ## Installeren
 

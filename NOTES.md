@@ -56,11 +56,14 @@ Fundering: MCP-basis + gebruikersidentificatie (sleutel) + contexttools
   te doen).
 
 **Stap 2 (WebUntis) – klaar.** POC 1-code herbruikt (`untis_login.py`, `rooster.py`,
-`config.py`) en samengebonden in `untis.py`. Twee tools: `haal_rooster(dagen=7)` en
-`haal_vakken()`.
-- **Context beïnvloedt het antwoord:** welke klas we lezen volgt uit het onthouden
-  feit `klas` van de gebruiker; anders `UNTIS_KLAS` uit `.env`; anders het
-  persoonlijke studentenrooster. Zo hangt het rooster van de opgeslagen context af.
+`config.py`) en samengebonden in `untis.py`. Twee tools: `haal_rooster(dagen=7, klas)`
+en `haal_vakken(klas)`.
+- **Vaste + dynamische parameters:** `klas` is een gesloten keuzelijst (Literal/enum
+  afgeleid uit `config.KLASSEN`) zodat de LLM geen ongeldige klas kan doorgeven;
+  `dagen` is begrensd tot 1–28. Beide optioneel.
+- **Context beïnvloedt het antwoord:** klas-keuze = meegegeven `klas` > onthouden feit
+  `klas` > `UNTIS_KLAS` uit `.env` > persoonlijk studentenrooster. Zo hangt het rooster
+  van de opgeslagen context af wanneer er geen klas wordt meegegeven.
 - **Keuze:** login per tool-call (eenvoudig/veilig), telkens netjes uitloggen. Login
   is traag → sessie cachen kan later een optimalisatie zijn.
 - Offline bewijs: `test_server.py` test nu óók de REST-parser met dezelfde fixture

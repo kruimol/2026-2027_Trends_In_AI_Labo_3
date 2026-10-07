@@ -12,12 +12,20 @@ Starten: `uv run python server.py`  (maak eerst een gebruiker met beheer.py).
 """
 
 import os
+from typing import Annotated, Literal
 
 from dotenv import load_dotenv
 from mcp.server.mcpserver import Context, MCPServer
+from pydantic import Field
 
+import config
 import database
 import untis
+
+# Gesloten keuzelijst voor de klas, afgeleid uit de ene bron van waarheid (config.py).
+# Door dit als Literal te typeren wordt het in het tool-schema een 'enum': de LLM kan
+# enkel een bestaande klas doorgeven en dus geen ongeldige waarde "verzinnen".
+KlasKeuze = Literal[tuple(config.KLASSEN.keys())]
 
 server = MCPServer(
     "trends-ai",
@@ -163,20 +171,25 @@ def _toon_les(les):
 
 @server.tool(
     description=(
-        "Geef het lesrooster van de gebruiker voor de komende `dagen` dagen (standaard 7): "
-        "een lijst lessen met vak, tijdstip en lokaal, gesorteerd op tijd. Welke klas we "
-        "lezen volgt uit het onthouden feit 'klas' van de gebruiker (anders de standaard "
-        "uit de serverinstelling). Gebruik dit als de gebruiker vraagt naar zijn rooster, "
-        "lessen, of wanneer/waar een bepaald vak is."
+        "Geef het lesrooster voor de komende `dagen` dagen (1-28, standaard 7): een lijst "
+        "lessen met vak, tijdstip en lokaal, gesorteerd op tijd. `klas` is optioneel en "
+        "mag enkel een waarde uit de vaste lijst zijn; laat je het leeg, dan gebruiken we "
+        "de onthouden klas van de gebruiker (of de standaard uit de serverinstelling). "
+        "Gebruik dit als de gebruiker vraagt naar zijn rooster, lessen, of wanneer/waar "
+        "een bepaald vak is."
     )
 )
-def haal_rooster(ctx: Context, dagen: int = 7) -> dict:
+def haal_rooster(
+    ctx: Context,
+    dagen: Annotated[int, Field(ge=1, le=28)] = 7,
+    klas: KlasKeuze | None = None,
+) -> dict:
     gebruiker_id, _ = _identificeer(ctx)
-    klas = _onthouden_klas(gebruiker_id)
-    lessen = untis.haal_lessen(dagen, klas_naam=klas)
+    gekozen = klas or _onthouden_klas(gebruiker_id)
+    lessen = untis.haal_lessen(dagen, klas_naam=gekozen)
     lessen.sort(key=lambda les: les["start"])
     return {
-        "klas": klas or "(standaard uit .env of persoonlijk rooster)",
+        "klas": gekozen or "(standaard uit .env of persoonlijk rooster)",
         "dagen": dagen,
         "aantal": len(lessen),
         "lessen": [_toon_les(les) for les in lessen],
@@ -186,18 +199,19 @@ def haal_rooster(ctx: Context, dagen: int = 7) -> dict:
 @server.tool(
     description=(
         "Geef de vakken van de gebruiker, afgeleid uit het rooster van de komende 4 weken, "
-        "met per vak het eerstvolgende lesmoment en lokaal. Welke klas we lezen volgt uit "
-        "het onthouden feit 'klas' (anders de standaard uit de serverinstelling). Gebruik "
-        "dit als de gebruiker vraagt welke vakken hij heeft."
+        "met per vak het eerstvolgende lesmoment en lokaal. `klas` is optioneel en mag enkel "
+        "een waarde uit de vaste lijst zijn; laat je het leeg, dan gebruiken we de onthouden "
+        "klas van de gebruiker (of de standaard uit de serverinstelling). Gebruik dit als de "
+        "gebruiker vraagt welke vakken hij heeft."
     )
 )
-def haal_vakken(ctx: Context) -> dict:
+def haal_vakken(ctx: Context, klas: KlasKeuze | None = None) -> dict:
     gebruiker_id, _ = _identificeer(ctx)
-    klas = _onthouden_klas(gebruiker_id)
-    lessen = untis.haal_lessen(28, klas_naam=klas)  # 4 weken
+    gekozen = klas or _onthouden_klas(gebruiker_id)
+    lessen = untis.haal_lessen(28, klas_naam=gekozen)  # 4 weken
     vakken = untis.eerstvolgende_per_vak(lessen)
     return {
-        "klas": klas or "(standaard uit .env of persoonlijk rooster)",
+        "klas": gekozen or "(standaard uit .env of persoonlijk rooster)",
         "aantal": len(vakken),
         "vakken": [
             {
