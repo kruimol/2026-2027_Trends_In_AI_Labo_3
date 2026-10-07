@@ -144,6 +144,80 @@ Stel dan opnieuw de vraag *"Wat moet ik nu doen?"*. Zonder onze server heeft
 Claude geen weet van je vakken, deadlines of zwakke punten en geeft het een
 algemeen, context-loos antwoord. Zet de connector weer aan voor het verschil.
 
+## Twee manieren van draaien: stdio vs. HTTP
+
+De server kan op twee transporten draaien, gestuurd door de omgevingsvariabele
+`STUDIECOACH_TRANSPORT`:
+
+- **`stdio`** (standaard) — Claude Desktop start de server lokaal als los proces.
+  Dit is wat hierboven beschreven staat.
+- **`http`** — de server luistert op een poort via *streamable-HTTP*. Zo kan je
+  hem in een container draaien en achter een domein deployen, en toevoegen als
+  **remote connector** (via een URL) in plaats van een lokaal commando.
+
+Relevante omgevingsvariabelen voor HTTP-modus:
+
+| Variabele | Standaard | Betekenis |
+|---|---|---|
+| `STUDIECOACH_TRANSPORT` | `stdio` | Zet op `http` om over een poort te serveren. |
+| `STUDIECOACH_HOST` | `127.0.0.1` | Interface om op te binden (in Docker `0.0.0.0`). |
+| `STUDIECOACH_PORT` | `8000` | Poort. |
+| `STUDIECOACH_ALLOWED_HOSTS` | *(leeg)* | Komma-gescheiden lijst van toegelaten `Host`-headers (bv. je domein). Leeg = DNS-rebinding-controle uit. |
+| `STUDIECOACH_GEHEUGEN` | naast `server.py` | Pad naar `geheugen.json` (in Docker een volume). |
+
+Het HTTP-eindpunt is altijd `/mcp` (dus bv. `http://localhost:8000/mcp`).
+
+## Deployen met Docker
+
+De `Dockerfile` bouwt de server en draait hem in HTTP-modus op poort 8000.
+
+```bash
+# Bouwen en starten (data komt in ./data dankzij het volume):
+docker compose up --build
+# → server luistert op http://localhost:8000/mcp
+```
+
+Of zonder compose:
+
+```bash
+docker build -t studiecoach .
+docker run -p 8000:8000 -v "$(pwd)/data:/app/data" studiecoach
+```
+
+`geheugen.json` wordt in `/app/data` geschreven; door die map als volume te
+koppelen blijft de data bewaard over herstarts heen.
+
+### Op je eigen domein
+
+Remote MCP-connectoren vereisen **HTTPS**. Zet daarom een reverse proxy met TLS
+vóór de container (bv. Caddy, Nginx of Traefik) die `https://jouwdomein/mcp`
+doorstuurt naar de container op poort 8000. Voorbeeld met Caddy (`Caddyfile`):
+
+```
+studiecoach.jouwdomein.be {
+    reverse_proxy localhost:8000
+}
+```
+
+Geef je domein dan mee zodat de `Host`-controle het aanvaardt:
+
+```bash
+STUDIECOACH_ALLOWED_HOSTS=studiecoach.jouwdomein.be docker compose up --build
+```
+
+(Of laat `STUDIECOACH_ALLOWED_HOSTS` leeg als de container enkel via de proxy
+bereikbaar is; dan staat de DNS-rebinding-controle uit.)
+
+### Toevoegen als remote connector
+
+In Claude Desktop / claude.ai: **Settings → Connectors → Add custom connector**,
+en geef de URL `https://studiecoach.jouwdomein.be/mcp` op. Daarna verschijnen
+dezelfde zeven tools, maar nu vanaf je server in plaats van lokaal.
+
+> Let op: in HTTP-modus is er **één gedeeld `geheugen.json`** voor iedereen die
+> verbindt. Voor dit schoolprototype is dat prima; het is geen gebruikersgescheiden
+> opslag.
+
 ## Bestandsoverzicht
 
 | Bestand | Rol |
@@ -154,3 +228,6 @@ algemeen, context-loos antwoord. Zet de connector weer aan voor het verschil.
 | `test_context_memory.py` | Pytest-tests voor `ContextMemory`. |
 | `geheugen.json` | Wordt automatisch aangemaakt; de persistente geschiedenis. |
 | `reflectie.md` | Reflectievragen (inhoud schrijven we zelf). |
+| `Dockerfile` | Bouwt de server en draait hem in HTTP-modus op poort 8000. |
+| `docker-compose.yml` | Start de container met een volume voor de data. |
+| `.dockerignore` | Houdt lokale rommel en data uit de image. |

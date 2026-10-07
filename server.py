@@ -102,6 +102,39 @@ def wis_geheugen() -> str:
     return "Het geheugen is gewist."
 
 
+def _start() -> None:
+    """Start de server in de juiste modus.
+
+    Standaard draaien we op stdio: zo start Claude Desktop de server lokaal als
+    los proces. Zetten we STUDIECOACH_TRANSPORT=http, dan serveren we over
+    streamable-HTTP op een poort, zodat de server achter een domein te deployen
+    valt (bv. in Docker met een reverse proxy ervoor).
+    """
+    transport = os.environ.get("STUDIECOACH_TRANSPORT", "stdio").lower()
+
+    if transport == "http":
+        host = os.environ.get("STUDIECOACH_HOST", "127.0.0.1")
+        poort = int(os.environ.get("STUDIECOACH_PORT", "8000"))
+
+        # DNS-rebinding-bescherming controleert de Host-header. Achter een
+        # vertrouwde reverse proxy wil je ofwel je domein toelaten via
+        # STUDIECOACH_ALLOWED_HOSTS (komma-gescheiden), ofwel de controle
+        # uitschakelen als je toch alleen via de proxy bereikbaar bent.
+        rauwe_hosts = os.environ.get("STUDIECOACH_ALLOWED_HOSTS", "").strip()
+        if rauwe_hosts:
+            beveiliging = TransportSecuritySettings(
+                enable_dns_rebinding_protection=True,
+                allowed_hosts=[h.strip() for h in rauwe_hosts.split(",") if h.strip()],
+            )
+        else:
+            beveiliging = TransportSecuritySettings(enable_dns_rebinding_protection=False)
+
+        logger.info("Studiecoach MCP-server start (streamable-http) op %s:%s/mcp", host, poort)
+        mcp.run(transport="streamable-http", host=host, port=poort, transport_security=beveiliging)
+    else:
+        logger.info("Studiecoach MCP-server start (stdio-transport).")
+        mcp.run(transport="stdio")
+
+
 if __name__ == "__main__":
-    logger.info("Studiecoach MCP-server start (stdio-transport).")
-    mcp.run(transport="stdio")
+    _start()

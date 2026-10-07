@@ -1,0 +1,19 @@
+# Eenvoudige manier om de studiecoach te starten en de data te bewaren.
+#   docker compose up --build
+#
+# De server luistert dan op http://localhost:8000/mcp.
+# Zet er in productie een reverse proxy met HTTPS voor (zie README).
+services:
+  studiecoach:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Laat je eigen domein toe voor de Host-header (komma-gescheiden).
+      # Laat leeg om de DNS-rebinding-controle uit te schakelen (alleen doen
+      # als de server enkel via je reverse proxy bereikbaar is).
+      STUDIECOACH_ALLOWED_HOSTS: "${STUDIECOACH_ALLOWED_HOSTS:-}"
+    volumes:
+      # Bewaar geheugen.json buiten de container, zodat data herstarts overleeft.
+      - ./data:/app/data
+    restart: unless-stopped

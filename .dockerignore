@@ -1,0 +1,10 @@
+# Niet mee in de image: lokale rommel en data.
+.git
+.venv
+__pycache__/
+*.pyc
+.pytest_cache/
+geheugen.json
+demo_geheugen.json
+data/
+reflectie.md
