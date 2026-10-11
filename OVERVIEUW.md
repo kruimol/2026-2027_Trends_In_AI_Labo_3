@@ -151,7 +151,7 @@ Dit is de kern van de opdracht — en het is op meerdere plaatsen aantoonbaar:
 3. **`markeer_deadline()`** → de status blijft bewaard, ook in een volgend gesprek, en
    kleurt wat `haal_deadlines()` toont.
 4. **Isolatie** tussen gebruikers is bewezen in [`demo.py`](mcp_server/demo.py)
-   (Aron vs. Lotte) en in [`test_server.py`](mcp_server/test_server.py).
+   (Aron vs. Tijs) en in [`test_server.py`](mcp_server/test_server.py).
 
 ---
 

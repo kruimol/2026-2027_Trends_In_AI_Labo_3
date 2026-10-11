@@ -44,8 +44,8 @@ uv sync
 uv run python demo.py
 ```
 
-Dit start de server, maakt twee gebruikers (Aron en Lotte) aan met elk een eigen
-sleutel, en toont dat Aron enkel zijn eigen klas ziet en Lotte de hare.
+Dit start de server, maakt twee gebruikers (Aron en Tijs) aan met elk een eigen
+sleutel, en toont dat Aron enkel zijn eigen klas ziet en Tijs de hare.
 
 ## Zelf gebruiken
 
@@ -78,8 +78,8 @@ claude mcp add --transport http trends-ai-context http://127.0.0.1:8000/mcp \
   --header "Authorization: Bearer <sleutel>"
 ```
 
-Vraag daarna in Claude Code bijvoorbeeld *"begroet me"* of vertel *"ik zit in klas
-3itai"* – Claude roept dan `begroet` / `onthoud` aan.
+Vraag daarna in Claude Code bijvoorbeeld _"begroet me"_ of vertel _"ik zit in klas
+3itai"_ – Claude roept dan `begroet` / `onthoud` aan.
 
 ### Toevoegen aan de MCP Inspector
 
@@ -88,7 +88,7 @@ npx @modelcontextprotocol/inspector
 ```
 
 Kies **Transport Type: Streamable HTTP**, en als URL
-`http://127.0.0.1:8000/mcp?key=<sleutel>` (of voeg onder *Authentication* een header
+`http://127.0.0.1:8000/mcp?key=<sleutel>` (of voeg onder _Authentication_ een header
 `Authorization: Bearer <sleutel>` toe). Klik **Connect** en test de tools.
 
 ## Geheimen

@@ -46,20 +46,20 @@ def test_feiten_gescheiden_per_gebruiker():
     conn = _verse_db()
     try:
         s_aron = database.maak_gebruiker(conn, "Aron")
-        s_lotte = database.maak_gebruiker(conn, "Lotte")
+        s_tijs = database.maak_gebruiker(conn, "Tijs")
         aron = database.gebruiker_via_sleutel(conn, s_aron)
-        lotte = database.gebruiker_via_sleutel(conn, s_lotte)
+        tijs = database.gebruiker_via_sleutel(conn, s_tijs)
 
         database.onthoud_feit(conn, aron["id"], "klas", "3itai")
-        database.onthoud_feit(conn, lotte["id"], "klas", "1itVTAI")
+        database.onthoud_feit(conn, tijs["id"], "klas", "1itVTAI")
 
         assert database.haal_feiten(conn, aron["id"]) == {"klas": "3itai"}
-        assert database.haal_feiten(conn, lotte["id"]) == {"klas": "1itVTAI"}
+        assert database.haal_feiten(conn, tijs["id"]) == {"klas": "1itVTAI"}
 
         # Wissen bij de een laat de ander ongemoeid.
         database.wis_feiten(conn, aron["id"])
         assert database.haal_feiten(conn, aron["id"]) == {}
-        assert database.haal_feiten(conn, lotte["id"]) == {"klas": "1itVTAI"}
+        assert database.haal_feiten(conn, tijs["id"]) == {"klas": "1itVTAI"}
     finally:
         conn.close()
     print("OK: feiten blijven gescheiden per gebruiker.")
@@ -69,20 +69,20 @@ def test_deadline_status_per_gebruiker():
     conn = _verse_db()
     try:
         s_aron = database.maak_gebruiker(conn, "Aron")
-        s_lotte = database.maak_gebruiker(conn, "Lotte")
+        s_tijs = database.maak_gebruiker(conn, "Tijs")
         aron = database.gebruiker_via_sleutel(conn, s_aron)
-        lotte = database.gebruiker_via_sleutel(conn, s_lotte)
+        tijs = database.gebruiker_via_sleutel(conn, s_tijs)
 
         database.zet_deadline_status(conn, aron["id"], "labo3@ap.be", "mee bezig")
-        database.zet_deadline_status(conn, lotte["id"], "labo3@ap.be", "klaar")
+        database.zet_deadline_status(conn, tijs["id"], "labo3@ap.be", "klaar")
         # Overschrijven werkt (zelfde uid, nieuwe status).
         database.zet_deadline_status(conn, aron["id"], "labo3@ap.be", "klaar")
 
         assert database.haal_deadline_statussen(conn, aron["id"]) == {"labo3@ap.be": "klaar"}
         # Zelfde uid, andere gebruiker: strikt gescheiden.
-        assert database.haal_deadline_statussen(conn, lotte["id"]) == {"labo3@ap.be": "klaar"}
-        database.zet_deadline_status(conn, lotte["id"], "paper@ap.be", "nog te doen")
-        assert database.haal_deadline_statussen(conn, lotte["id"]) == {
+        assert database.haal_deadline_statussen(conn, tijs["id"]) == {"labo3@ap.be": "klaar"}
+        database.zet_deadline_status(conn, tijs["id"], "paper@ap.be", "nog te doen")
+        assert database.haal_deadline_statussen(conn, tijs["id"]) == {
             "labo3@ap.be": "klaar",
             "paper@ap.be": "nog te doen",
         }

@@ -55,24 +55,24 @@ def _tekst(resultaat):
     return " ".join(stukken)
 
 
-async def _demo(sleutel_aron, sleutel_lotte):
+async def _demo(sleutel_aron, sleutel_tijs):
     await _roep_tool(sleutel_aron, "onthoud", {"sleutel": "klas", "waarde": "3itai"})
-    await _roep_tool(sleutel_lotte, "onthoud", {"sleutel": "klas", "waarde": "1itVTAI"})
+    await _roep_tool(sleutel_tijs, "onthoud", {"sleutel": "klas", "waarde": "1itVTAI"})
 
     context_aron = _tekst(await _roep_tool(sleutel_aron, "haal_context_op"))
-    context_lotte = _tekst(await _roep_tool(sleutel_lotte, "haal_context_op"))
+    context_tijs = _tekst(await _roep_tool(sleutel_tijs, "haal_context_op"))
     begroeting_aron = _tekst(await _roep_tool(sleutel_aron, "begroet"))
-    begroeting_lotte = _tekst(await _roep_tool(sleutel_lotte, "begroet"))
+    begroeting_tijs = _tekst(await _roep_tool(sleutel_tijs, "begroet"))
 
     print("Context van Aron :", context_aron)
-    print("Context van Lotte:", context_lotte)
+    print("Context van Tijs:", context_tijs)
     print("Begroeting Aron  :", begroeting_aron)
-    print("Begroeting Lotte :", begroeting_lotte)
+    print("Begroeting Tijs :", begroeting_tijs)
 
     assert "3itai" in context_aron and "1itVTAI" not in context_aron, context_aron
-    assert "1itVTAI" in context_lotte and "3itai" not in context_lotte, context_lotte
+    assert "1itVTAI" in context_tijs and "3itai" not in context_tijs, context_tijs
     assert "Aron" in begroeting_aron and "3itai" in begroeting_aron
-    assert "Lotte" in begroeting_lotte and "1itVTAI" in begroeting_lotte
+    assert "Tijs" in begroeting_tijs and "1itVTAI" in begroeting_tijs
     print("\nOK: elke gebruiker ziet enkel zijn eigen context.")
 
 
@@ -82,7 +82,7 @@ def main():
     try:
         database.init_db(conn)
         sleutel_aron = database.maak_gebruiker(conn, "Aron")
-        sleutel_lotte = database.maak_gebruiker(conn, "Lotte")
+        sleutel_tijs = database.maak_gebruiker(conn, "Tijs")
     finally:
         conn.close()
 
@@ -97,7 +97,7 @@ def main():
         if not _wacht_op_poort(POORT):
             fout = server.stderr.read().decode(errors="replace") if server.stderr else ""
             raise SystemExit("Server startte niet op tijd.\n" + fout)
-        anyio.run(_demo, sleutel_aron, sleutel_lotte)
+        anyio.run(_demo, sleutel_aron, sleutel_tijs)
     finally:
         server.terminate()
         with contextlib.suppress(subprocess.TimeoutExpired):
