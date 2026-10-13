@@ -62,9 +62,9 @@ rijker contextprotocol winst zou boeken:
   zou context uniform laten delen, doorzoeken en versioneren tussen toepassingen.
 - **Sessie- en consentbeheer.** Expliciete protocol-afspraken over *welke* context
   bewaard mag worden en *hoe lang* zouden privacy afdwingbaar maken in plaats van een
-  keuze van de ontwikkelaar (zie ethiek hieronder).
+  keuze van de ontwikkelaar (zie ethische aspecten hieronder).
 - **Caching en sessies in het protocol.** Dit zou meteen onze trage WebUntis-login
-  oplossen zonder dat we zelf een houdbaarheidslogica moeten schrijven.
+  oplossen (zie technische aspecten hieronder) zonder dat we zelf een houdbaarheidslogica moeten schrijven.
 
 ## Technische aspecten
 
@@ -79,7 +79,7 @@ Enkele architectuurkeuzes en hun afwegingen:
 - **Gesloten keuzelijsten (enums) in het tool-schema.** `klas` (afgeleid uit één bron
   van waarheid, `config.KLASSEN`) en `status` zijn `Literal`-types. Zo kan het model
   geen ongeldige waarde "verzinnen". Belangrijk bij een LLM dat vrije tekst
-  produceert. Numerieke parameters zoals `dagen` zijn begrensd (1–28 / 1–365).
+  produceert. Numerieke parameters zoals `dagen` zijn begrensd (1–31 / 1–366).
 - **Per-gebruiker configuratie met terugval.** De Digitap-ICS-URL staat per gebruiker
   in de databank, met terugval op een gedeelde `DIGITAP_ICS_URL` uit `.env`. Zo werkt
   zowel "één gedeelde kalender" als "een kalender per student".
@@ -108,9 +108,7 @@ niet theoretisch.
 - **Beheer van langetermijngeheugen.** De gebruiker houdt controle: `onthoud` voegt toe,
   `wis_geheugen` verwijdert alles. Een concrete invulling van het "recht om vergeten te
   worden". Toch zagen we grenzen: er is nu geen *vervaldatum* op feiten en geen expliciet
-  moment van *toestemming* per bewaarde gegeven. Een volwassen systeem zou per feit een
-  houdbaarheid en een consent-status bijhouden, en de gebruiker periodiek tonen wat er
-  over hem bewaard wordt.
+  moment van *toestemming* per bewaarde gegeven. Een volwassen systeem zou per feit een houdbaarheid en een consent-status bijhouden, en de gebruiker periodiek tonen wat er over hem bewaard wordt.
 
 ## Conclusie: Geleerde lessen
 
